@@ -1,0 +1,1233 @@
+fileFormatVersion: 2
+guid: 7ca672049a887bd48b2b729d1ca3d764
+timeCreated: 1524926145
+licenseType: Pro
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: armour_heavy_adv1_3
+    21300002: jewelry_vit_adv1_5
+    21300004: jewelry_vit_adv1_4
+    21300006: jewelry_str_base_2
+    21300008: jewelry_str_base_1
+    21300010: jewelry_other_adv2_5
+    21300012: jewelry_other_adv1_5
+    21300014: jewelry_luk_base_1
+    21300016: jewelry_int_adv1_5
+    21300018: jewelry_int_adv1_4
+    21300020: jewelry_int_adv1_1
+    21300022: jewelry_dex_adv1_5
+    21300024: jewelry_dex_adv1_4
+    21300026: jewelry_agi_base_2
+    21300028: jewelry_agi_base_1
+    21300030: jewelry_agi_adv1_5
+    21300032: jewelry_vit_base_1
+    21300034: muffler_all_base_1
+    21300036: muffler_all_base_2
+    21300038: muffler_heavy_adv1_3
+    21300040: other-09
+    21300042: other-08
+    21300044: other-07
+    21300046: other-06
+    21300048: other-05
+    21300050: other-04
+    21300052: other-02
+    21300054: jewelry_agi_adv1_4
+    21300056: other-01
+    21300058: muffler_middle_avd1_4
+    21300060: muffler_middle_adv1_5
+    21300062: muffler_middle_adv1_3
+    21300064: muffler_light_adv_5
+    21300066: muffler_light_adv1_4
+    21300068: muffler_heavy_adv1_5
+    21300070: muffler_heavy_adv1_4
+    21300072: muffler_middle_base_2
+    21300074: other-10
+    21300076: jewelry_agi_adv1_3
+    21300078: deputy_shield_base_1
+    21300080: boots_all_base_1
+    21300082: armour_middle_base_2
+    21300084: armour_middle_base_1
+    21300086: armour_middle_avd_5
+    21300088: armour_middle_adv2_3
+    21300090: armour_middle_adv1_3
+    21300092: armour_light_base_2
+    21300094: armour_light_base_1
+    21300096: armour_light_adv1_5
+    21300098: armour_light_adv1_4
+    21300100: armour_light_adv1_3
+    21300102: armour_heavy_base_2
+    21300104: armour_heavy_base_1
+    21300106: armour_heavy_adv1_5
+    21300108: armour_heavy_adv1_4
+    21300110: boots_all_base_2
+    21300112: boots_heavy_adv1_3
+    21300114: boots_heavy_adv1_4
+    21300116: boots_heavy_adv1_5
+    21300118: deputy_shield_avd2_5
+    21300120: deputy_shield_avd2_4
+    21300122: deputy_shield_avd1_5
+    21300124: deputy_shield_adv2_3
+    21300126: deputy_shield_adv1_4
+    21300128: deputy_shield_adv1_3
+    21300130: deputy_book_avd1_5
+    21300132: deputy_shield_base_2
+    21300134: deputy_book_avd1_4
+    21300136: deputy_arrow_base_2
+    21300138: deputy_arrow_base_1
+    21300140: deputy_arrow_adv1_4
+    21300142: boots_middle_adv1_5
+    21300144: boots_middle_adv1_4
+    21300146: boots_middle_adv1_3
+    21300148: boots_heavy_adv2_5
+    21300150: deputy_book_avd1_3
+    21300152: other-11
+  externalObjects: {}
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapU: -1
+    wrapV: -1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: armour_heavy_adv1_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: jewelry_vit_adv1_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 152
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: jewelry_vit_adv1_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 304
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: jewelry_str_base_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 456
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: jewelry_str_base_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 608
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: jewelry_other_adv2_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 760
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: jewelry_other_adv1_5
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 0
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: jewelry_luk_base_1
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 152
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: jewelry_int_adv1_5
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 304
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: jewelry_int_adv1_4
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 456
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: jewelry_int_adv1_1
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 608
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: jewelry_dex_adv1_5
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 760
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: jewelry_dex_adv1_4
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 0
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: jewelry_agi_base_2
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 152
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: jewelry_agi_base_1
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 304
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: jewelry_agi_adv1_5
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 456
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: jewelry_vit_base_1
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 608
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: muffler_all_base_1
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 760
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: muffler_all_base_2
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 0
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: muffler_heavy_adv1_3
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 152
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: other-09
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 304
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: other-08
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 456
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: other-07
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 608
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: other-06
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 760
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: other-05
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 0
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: other-04
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 152
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: other-02
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 304
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: jewelry_agi_adv1_4
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 456
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: other-01
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 608
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: muffler_middle_avd1_4
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 760
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: muffler_middle_adv1_5
+      rect:
+        serializedVersion: 2
+        x: 760
+        y: 0
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: muffler_middle_adv1_3
+      rect:
+        serializedVersion: 2
+        x: 760
+        y: 152
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: muffler_light_adv_5
+      rect:
+        serializedVersion: 2
+        x: 760
+        y: 304
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: muffler_light_adv1_4
+      rect:
+        serializedVersion: 2
+        x: 760
+        y: 456
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: muffler_heavy_adv1_5
+      rect:
+        serializedVersion: 2
+        x: 760
+        y: 608
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: muffler_heavy_adv1_4
+      rect:
+        serializedVersion: 2
+        x: 760
+        y: 760
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: muffler_middle_base_2
+      rect:
+        serializedVersion: 2
+        x: 912
+        y: 0
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: other-10
+      rect:
+        serializedVersion: 2
+        x: 912
+        y: 152
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: jewelry_agi_adv1_3
+      rect:
+        serializedVersion: 2
+        x: 912
+        y: 304
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: deputy_shield_base_1
+      rect:
+        serializedVersion: 2
+        x: 912
+        y: 456
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: boots_all_base_1
+      rect:
+        serializedVersion: 2
+        x: 912
+        y: 608
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: armour_middle_base_2
+      rect:
+        serializedVersion: 2
+        x: 912
+        y: 760
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: armour_middle_base_1
+      rect:
+        serializedVersion: 2
+        x: 1064
+        y: 0
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: armour_middle_avd_5
+      rect:
+        serializedVersion: 2
+        x: 1216
+        y: 0
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: armour_middle_adv2_3
+      rect:
+        serializedVersion: 2
+        x: 1368
+        y: 0
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: armour_middle_adv1_3
+      rect:
+        serializedVersion: 2
+        x: 1520
+        y: 0
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: armour_light_base_2
+      rect:
+        serializedVersion: 2
+        x: 1672
+        y: 0
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: armour_light_base_1
+      rect:
+        serializedVersion: 2
+        x: 1824
+        y: 0
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: armour_light_adv1_5
+      rect:
+        serializedVersion: 2
+        x: 1064
+        y: 152
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: armour_light_adv1_4
+      rect:
+        serializedVersion: 2
+        x: 1064
+        y: 304
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: armour_light_adv1_3
+      rect:
+        serializedVersion: 2
+        x: 1064
+        y: 456
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: armour_heavy_base_2
+      rect:
+        serializedVersion: 2
+        x: 1064
+        y: 608
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: armour_heavy_base_1
+      rect:
+        serializedVersion: 2
+        x: 1064
+        y: 760
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: armour_heavy_adv1_5
+      rect:
+        serializedVersion: 2
+        x: 1216
+        y: 152
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: armour_heavy_adv1_4
+      rect:
+        serializedVersion: 2
+        x: 1368
+        y: 152
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: boots_all_base_2
+      rect:
+        serializedVersion: 2
+        x: 1520
+        y: 152
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: boots_heavy_adv1_3
+      rect:
+        serializedVersion: 2
+        x: 1672
+        y: 152
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: boots_heavy_adv1_4
+      rect:
+        serializedVersion: 2
+        x: 1824
+        y: 152
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: boots_heavy_adv1_5
+      rect:
+        serializedVersion: 2
+        x: 1216
+        y: 304
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: deputy_shield_avd2_5
+      rect:
+        serializedVersion: 2
+        x: 1216
+        y: 456
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: deputy_shield_avd2_4
+      rect:
+        serializedVersion: 2
+        x: 1216
+        y: 608
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: deputy_shield_avd1_5
+      rect:
+        serializedVersion: 2
+        x: 1216
+        y: 760
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: deputy_shield_adv2_3
+      rect:
+        serializedVersion: 2
+        x: 1368
+        y: 304
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: deputy_shield_adv1_4
+      rect:
+        serializedVersion: 2
+        x: 1520
+        y: 304
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: deputy_shield_adv1_3
+      rect:
+        serializedVersion: 2
+        x: 1672
+        y: 304
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: deputy_book_avd1_5
+      rect:
+        serializedVersion: 2
+        x: 1824
+        y: 304
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: deputy_shield_base_2
+      rect:
+        serializedVersion: 2
+        x: 1368
+        y: 456
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: deputy_book_avd1_4
+      rect:
+        serializedVersion: 2
+        x: 1368
+        y: 608
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: deputy_arrow_base_2
+      rect:
+        serializedVersion: 2
+        x: 1368
+        y: 760
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: deputy_arrow_base_1
+      rect:
+        serializedVersion: 2
+        x: 1520
+        y: 456
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: deputy_arrow_adv1_4
+      rect:
+        serializedVersion: 2
+        x: 1672
+        y: 456
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: boots_middle_adv1_5
+      rect:
+        serializedVersion: 2
+        x: 1824
+        y: 456
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: boots_middle_adv1_4
+      rect:
+        serializedVersion: 2
+        x: 1520
+        y: 608
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: boots_middle_adv1_3
+      rect:
+        serializedVersion: 2
+        x: 1520
+        y: 760
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: boots_heavy_adv2_5
+      rect:
+        serializedVersion: 2
+        x: 1672
+        y: 608
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: deputy_book_avd1_3
+      rect:
+        serializedVersion: 2
+        x: 1824
+        y: 608
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: other-11
+      rect:
+        serializedVersion: 2
+        x: 1672
+        y: 760
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    outline: []
+    physicsShape: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: uiatlas/test
+  assetBundleVariant: 

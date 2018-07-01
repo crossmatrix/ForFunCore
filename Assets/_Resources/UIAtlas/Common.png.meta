@@ -1,0 +1,1533 @@
+fileFormatVersion: 2
+guid: 096ae7422912296439259b27ae9d9791
+timeCreated: 1524926154
+licenseType: Pro
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: 3
+    21300002: 1
+    21300004: 2
+    21300006: 4
+    21300008: 5
+    21300010: 6
+    21300012: hero_cru_deffent_p
+    21300014: hero_hnt_rage_p
+    21300016: hero_hnt_improveconcentration_a
+    21300018: hero_hnt_hnthalo_p
+    21300020: hero_hnt_focusedarrowstrike_u
+    21300022: hero_hnt_falconassault_u
+    21300024: hero_hnt_detect_a
+    21300026: hero_hnt_claymoretrap_a
+    21300028: hero_hnt_blitzbeat_u
+    21300030: hero_hnt_arrowshower_u
+    21300032: hero_hnt_splitshot_a
+    21300034: hero_hnt_anklesnare_a
+    21300036: hero_dan_ladyluck_a
+    21300038: hero_dan_gypsyskiss_u
+    21300040: hero_dan_charmingwink_a
+    21300042: hero_dan_arrowvulcan_u
+    21300044: hero_cru_smite_a
+    21300046: hero_cru_resistantsouls_u
+    21300048: hero_cru_magumbreak_a
+    21300050: hero_cru_holycross_a
+    21300052: hero_cru_guard_u
+    21300054: hero_dan_slinging_a
+    21300056: hero_hnt_windwalker_a
+    21300058: hero_kin_aurablade_a
+    21300060: hero_kin_bashkai_u
+    21300062: hero_mul_addmdef_p
+    21300064: hero_mul_adddex_p
+    21300066: hero_mul_addagi_p
+    21300068: hero_mul_adatkspeed_p
+    21300070: hero_mon_throwspirit_u
+    21300072: hero_mon_summonspiritsphere_a
+    21300074: hero_mon_ragingtrifectablow_a
+    21300076: hero_mon_ragingquadrupleblow_a
+    21300078: hero_mon_occultimpaction_a
+    21300080: hero_mon_mentalstrengh_u
+    21300082: hero_mon_increaseagi_a
+    21300084: hero_mon_angelus_u
+    21300086: hero_kin_twohandquicken_u
+    21300088: hero_kin_speardynamo_a
+    21300090: hero_kin_spearboomerang_a
+    21300092: hero_kin_pierce_a
+    21300094: hero_kin_frontatk_p
+    21300096: hero_kin_clashingspiral_u
+    21300098: hero_kin_chargeattack_a
+    21300100: hero_kin_bowlingbash_u
+    21300102: hero_kin_bash_a
+    21300104: hero_cru_grandcross_u
+    21300106: hero_mul_adint_p
+    21300108: hero_mul_admaxhp_p
+    21300110: hero_bsm_transform_p
+    21300112: hero_cru_defendingaura_a
+    21300114: hero_asi_meteorassault_u
+    21300116: hero_asi_katatmastery_p
+    21300118: hero_asi_grimtooth_a
+    21300120: hero_asi_envenom_a
+    21300122: hero_asi_enchantpoison_a
+    21300124: hero_asi_doubleattack_u
+    21300126: hero_asi_assassin_p
+    21300128: hero_asi_sandattack_a
+    21300130: hero_asi_adwater_p
+    21300132: hero_alc_mammonite_a
+    21300134: hero_alc_energypotion_u
+    21300136: hero_alc_callhomunculus_u
+    21300138: hero_alc_bomb_a
+    21300140: hero_alc_bluepotion_u
+    21300142: hero_alc_addberserkpotion_a
+    21300144: hero_alc_acidterror_u
+    21300146: hero_alc_acidbomb_u
+    21300148: hero_alc_summonmarinesphere_a
+    21300150: hero_asi_sonicblow_a
+    21300152: hero_asi_poisonoussmoke_a
+    21300154: hero_brd_magicstring_u
+    21300156: hero_bsm_shatteringstrike_a
+    21300158: hero_bsm_sense_a
+    21300160: hero_bsm_powerthrust_a
+    21300162: hero_bsm_highspeedcartram_a
+    21300164: hero_bsm_hammerfall_u
+    21300166: hero_bsm_groundguard_u
+    21300168: hero_asi_venomdust_u
+    21300170: hero_bsm_crazyuproar_a
+    21300172: hero_bsm_cartrevolution_u
+    21300174: hero_bsm_equipmentbreaker_a
+    21300176: hero_bsm_advit&str_p
+    21300178: hero_bsm_adrenalinerush_a
+    21300180: hero_bsm_adddef_p
+    21300182: hero_brd_unchainedserenade_a
+    21300184: hero_brd_songoflutie_u
+    21300186: hero_brd_pangvoice_a
+    21300188: hero_brd_mentalsensing_a
+    21300190: hero_brd_melodystrike_a
+    21300192: hero_bsm_axetormado_a
+  externalObjects: {}
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapU: -1
+    wrapV: -1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: hero_cru_deffent_p
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: hero_hnt_rage_p
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 152
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: hero_hnt_improveconcentration_a
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 304
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: hero_hnt_hnthalo_p
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 456
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: hero_hnt_focusedarrowstrike_u
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 608
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: hero_hnt_falconassault_u
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 760
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: hero_hnt_detect_a
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 912
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: hero_hnt_claymoretrap_a
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1064
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: hero_hnt_blitzbeat_u
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1216
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: hero_hnt_arrowshower_u
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1368
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: hero_hnt_splitshot_a
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1520
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: hero_hnt_anklesnare_a
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1672
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: hero_dan_ladyluck_a
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1824
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: hero_dan_gypsyskiss_u
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 0
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: hero_dan_charmingwink_a
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 0
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: hero_dan_arrowvulcan_u
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 0
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: hero_cru_smite_a
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 0
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: hero_cru_resistantsouls_u
+      rect:
+        serializedVersion: 2
+        x: 760
+        y: 0
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: hero_cru_magumbreak_a
+      rect:
+        serializedVersion: 2
+        x: 912
+        y: 0
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: hero_cru_holycross_a
+      rect:
+        serializedVersion: 2
+        x: 1064
+        y: 0
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: hero_cru_guard_u
+      rect:
+        serializedVersion: 2
+        x: 1216
+        y: 0
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: hero_dan_slinging_a
+      rect:
+        serializedVersion: 2
+        x: 1368
+        y: 0
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: hero_hnt_windwalker_a
+      rect:
+        serializedVersion: 2
+        x: 1520
+        y: 0
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: hero_kin_aurablade_a
+      rect:
+        serializedVersion: 2
+        x: 1672
+        y: 0
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: hero_kin_bashkai_u
+      rect:
+        serializedVersion: 2
+        x: 1824
+        y: 0
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: hero_mul_addmdef_p
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 152
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: hero_mul_adddex_p
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 304
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: hero_mul_addagi_p
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 456
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: hero_mul_adatkspeed_p
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 608
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: hero_mon_throwspirit_u
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 760
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: hero_mon_summonspiritsphere_a
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 912
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: hero_mon_ragingtrifectablow_a
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 1064
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: hero_mon_ragingquadrupleblow_a
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 1216
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: hero_mon_occultimpaction_a
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 1368
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: hero_mon_mentalstrengh_u
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 1520
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: hero_mon_increaseagi_a
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 1672
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: hero_mon_angelus_u
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 1824
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: hero_kin_twohandquicken_u
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 152
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: hero_kin_speardynamo_a
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 152
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: hero_kin_spearboomerang_a
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 152
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: hero_kin_pierce_a
+      rect:
+        serializedVersion: 2
+        x: 760
+        y: 152
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: hero_kin_frontatk_p
+      rect:
+        serializedVersion: 2
+        x: 912
+        y: 152
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: hero_kin_clashingspiral_u
+      rect:
+        serializedVersion: 2
+        x: 1064
+        y: 152
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: hero_kin_chargeattack_a
+      rect:
+        serializedVersion: 2
+        x: 1216
+        y: 152
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: hero_kin_bowlingbash_u
+      rect:
+        serializedVersion: 2
+        x: 1368
+        y: 152
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: hero_kin_bash_a
+      rect:
+        serializedVersion: 2
+        x: 1520
+        y: 152
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: hero_cru_grandcross_u
+      rect:
+        serializedVersion: 2
+        x: 1672
+        y: 152
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: hero_mul_adint_p
+      rect:
+        serializedVersion: 2
+        x: 1824
+        y: 152
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: hero_mul_admaxhp_p
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 304
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: hero_bsm_transform_p
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 456
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: hero_cru_defendingaura_a
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 608
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: hero_asi_meteorassault_u
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 760
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: hero_asi_katatmastery_p
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 912
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: hero_asi_grimtooth_a
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 1064
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: hero_asi_envenom_a
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 1216
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: hero_asi_enchantpoison_a
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 1368
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: hero_asi_doubleattack_u
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 1520
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: hero_asi_assassin_p
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 1672
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: hero_asi_sandattack_a
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 1824
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: hero_asi_adwater_p
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 304
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: hero_alc_mammonite_a
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 304
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: hero_alc_energypotion_u
+      rect:
+        serializedVersion: 2
+        x: 760
+        y: 304
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: hero_alc_callhomunculus_u
+      rect:
+        serializedVersion: 2
+        x: 912
+        y: 304
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: hero_alc_bomb_a
+      rect:
+        serializedVersion: 2
+        x: 1064
+        y: 304
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: hero_alc_bluepotion_u
+      rect:
+        serializedVersion: 2
+        x: 1216
+        y: 304
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: hero_alc_addberserkpotion_a
+      rect:
+        serializedVersion: 2
+        x: 1368
+        y: 304
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: hero_alc_acidterror_u
+      rect:
+        serializedVersion: 2
+        x: 1520
+        y: 304
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: hero_alc_acidbomb_u
+      rect:
+        serializedVersion: 2
+        x: 1672
+        y: 304
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: hero_alc_summonmarinesphere_a
+      rect:
+        serializedVersion: 2
+        x: 1824
+        y: 304
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: hero_asi_sonicblow_a
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 456
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: hero_asi_poisonoussmoke_a
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 608
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: hero_brd_magicstring_u
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 760
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: hero_bsm_shatteringstrike_a
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 912
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: hero_bsm_sense_a
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 1064
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: hero_bsm_powerthrust_a
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 1216
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: hero_bsm_highspeedcartram_a
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 1368
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: hero_bsm_hammerfall_u
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 1520
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: hero_bsm_groundguard_u
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 1672
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: hero_asi_venomdust_u
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 1824
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: hero_bsm_crazyuproar_a
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 456
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: hero_bsm_cartrevolution_u
+      rect:
+        serializedVersion: 2
+        x: 760
+        y: 456
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: hero_bsm_equipmentbreaker_a
+      rect:
+        serializedVersion: 2
+        x: 912
+        y: 456
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: hero_bsm_advit&str_p
+      rect:
+        serializedVersion: 2
+        x: 1064
+        y: 456
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: hero_bsm_adrenalinerush_a
+      rect:
+        serializedVersion: 2
+        x: 1216
+        y: 456
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: hero_bsm_adddef_p
+      rect:
+        serializedVersion: 2
+        x: 1368
+        y: 456
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: hero_brd_unchainedserenade_a
+      rect:
+        serializedVersion: 2
+        x: 1520
+        y: 456
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: hero_brd_songoflutie_u
+      rect:
+        serializedVersion: 2
+        x: 1672
+        y: 456
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: hero_brd_pangvoice_a
+      rect:
+        serializedVersion: 2
+        x: 1824
+        y: 456
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: hero_brd_mentalsensing_a
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 608
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: hero_brd_melodystrike_a
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 760
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: hero_bsm_axetormado_a
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 912
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: 3
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 1064
+        width: 101
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: 6
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 1167
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: 5
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 1269
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: 4
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 1371
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: 2
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 1473
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 4, y: 3, z: 2, w: 2}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: 1
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 1575
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 4, y: 3, z: 2, w: 1}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    outline: []
+    physicsShape: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: uiatlas/common
+  assetBundleVariant: 
