@@ -44,8 +44,9 @@ require "System.Timer"
 require "System.Reflection.BindingFlags"
 
 require "misc.class"
+require "ev.evMgr"
 require "misc.coroutine"
--- require "misc.pool"
+require "misc.pool"
 require "misc.statemachine"
 
 require "Base.LuaDrive"

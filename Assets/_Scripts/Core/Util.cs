@@ -28,6 +28,11 @@ public class Util : MonoBehaviour
             return UICtrl.curInst;
         }
     }
+    private static GameProxy proxy {
+        get {
+            return GameProxy.instance;
+        }
+    }
 
     public static bool CheckPtr(int ptr)
     {
@@ -49,11 +54,10 @@ public class Util : MonoBehaviour
         return objCache.GetPtr(rootPtr, loc, typeVal);
     }
 
-    //public static void InitResourceCtrl()
-    //{
-    //    resCtrl.Init();
-    //}
-
+    public static void InitResourceCtrl()
+    {
+        resCtrl.Init();
+    }
 
     public static int NewObj(string name, int parentPtr)
     {
@@ -66,7 +70,7 @@ public class Util : MonoBehaviour
         return objCache.NewPtr(obj);
     }
 
-    public static int NewPref(string path, int parentPtr)
+    public static int NewPref(string path, int parentPtr = 0)
     {
         GameObject inst = _InstObj(path);
         if (parentPtr != 0)
@@ -90,17 +94,19 @@ public class Util : MonoBehaviour
         self.SetParent(parent, false);
     }
 
-    public static int LoadScene(string path)
+    public static void LoadScene(string path)
     {
         AsyncOperation ao = resCtrl.LoadScene(path);
-        return objCache.NewPtr(ao);
+        proxy.StartCo(WaitLoadScene(ao, path));
     }
 
-    public static int AOIsDone(int ptr)
+    private static IEnumerator WaitLoadScene(AsyncOperation ao, string path)
     {
-        object obj = objCache.GetData(ptr);
-        AsyncOperation _ao = obj as AsyncOperation;
-        return _ao.isDone ? 1 : 0;
+        yield return new WaitUntil(() =>
+        {
+            return ao.isDone;
+        });
+        LuaRun.curInst.TrigEv(path);
     }
 
     public static int NewUI(string path)

@@ -1155,9 +1155,10 @@ namespace LuaInterface
             {
                 lua_pop(L, 1);
             }
+            LuaException.luaStack = new LuaException(e.Message, e, 2);
             return tolua_error(L, message);
 
-            //LuaException.luaStack = new LuaException(e.Message, e, 2);            
+            //LuaException.luaStack = new LuaException(e.Message, e, 2);
             //return tolua_error(L, e.Message);
         }
 
@@ -1181,6 +1182,7 @@ namespace LuaInterface
             {
                 lua_pop(L, 1);
             }
+            LuaException.luaStack = new LuaException(msg, e, 2);
             return tolua_error(L, message);
             
             //LuaException.luaStack = new LuaException(msg, e, 2);

@@ -243,7 +243,7 @@ public class BundleTool : MonoBehaviour {
             }
         }
         else {
-            Debug.Log("<color=#ffff00>built-in</color>" + asset);
+            Debug.Log("<color=#ffff00>built-in </color>" + asset);
         }
     }
 

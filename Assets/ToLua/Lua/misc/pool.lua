@@ -1,7 +1,6 @@
 ﻿local class = class
 local logerr = logerr
-local LU = LU
-local GameProxy = GameProxy
+local Util = Util
 local list = list
 local ilist = ilist
 local CheckInterval = 1
@@ -12,7 +11,7 @@ local Cls_Pool = class()
 function Cls_Pool:ctor()
 	self.m_list = {}
 	self.m_checkCount = 0
-	self.m_rootPtr = LU:NewObj("PrefPool", GameDefine.GameProxy)
+	self.m_rootPtr = Util.NewObj("PrefPool", GameDefine.ProxyObj)
 end
 
 function Cls_Pool:update(t)
@@ -32,7 +31,7 @@ function Cls_Pool:checkIdle(t)
 			local count = inst._count + t
 			if count >= DestroyInstItv then
 				idle:remove(itr)
-				GameProxy.DestroyPtr(inst.ptr)
+				Util.DestroyPtr(inst.ptr)
 			else
 				inst._count = count
 			end
@@ -49,7 +48,7 @@ function Cls_Pool:searchFromCache(arg)
 	else
 		container = {busy = {}, idle = list:new(), busyLength = 0, box = nil}
 		self.m_list[arg] = container
-		container.box = LU:NewObj("[rs]" .. arg, self.m_rootPtr)
+		container.box = Util.NewObj("[rs]" .. arg, self.m_rootPtr)
 	end
 	return targ
 end
@@ -63,15 +62,16 @@ end
 function Cls_Pool:_pathSpawn(name)
 	local targ = self:searchFromCache(name)
 	if not targ then
-		targ = {ptr = LU:NewPref(name), _count = 0, _flag = name}
+		targ = {ptr = Util.NewPref(name, 0), _count = 0, _flag = name}
+	else
+		targ = {ptr = targ.ptr, _count = 0, _flag = name}
 	end
 	self:_pushToBusy(targ)
 	return targ
 end
 
 function Cls_Pool:_pushToBusy(targ)
-	LU:SetActive(targ.ptr, true)
-	targ._count = 0
+	Util.SetActive(targ.ptr, true)
 	local container = self.m_list[targ._flag]
 	container.busy[targ] = true
 	container.busyLength = container.busyLength + 1
@@ -80,12 +80,12 @@ end
 function Cls_Pool:despawn(inst, container)
 	container = container or self.m_list[inst._flag]
 	if container and container.busy[inst] then
-		if GameProxy.CheckPtr(inst.ptr) then
+		if Util.CheckPtr(inst.ptr) then
 			container.busy[inst] = nil
 			container.busyLength = container.busyLength - 1
 			container.idle:push(inst)
-			LU:SetActive(inst.ptr, false)
-			LU:SetParent(inst.ptr, container.box)
+			Util.SetActive(inst.ptr, false)
+			Util.SetParent(inst.ptr, container.box)
 		end
 	end
 end

@@ -4,9 +4,12 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameProxy : MonoBehaviour {
+    public static GameProxy instance { get; set; }
+
     private List<IGeneral> _ctrlList;
 
     void Awake() {
+        instance = this;
         DontDestroyOnLoad(this);
         _ctrlList = new List<IGeneral>();
 
@@ -73,4 +76,8 @@ public class GameProxy : MonoBehaviour {
     //    _Init();
     //    _Start();
     //}
+
+    public void StartCo(IEnumerator func) {
+        StartCoroutine(func);
+    }
 }

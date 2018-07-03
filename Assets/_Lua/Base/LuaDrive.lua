@@ -14,7 +14,7 @@ function Cls_LuaDrive:ctor()
 	-- 	require(v)
 	-- end
 
-	-- self:register(pool)
+	self:register(pool)
 	self:register(coMgr)
 	
 	-- self:register(uiMgr)

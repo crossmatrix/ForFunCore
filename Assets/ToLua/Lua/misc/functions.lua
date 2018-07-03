@@ -6,6 +6,7 @@ local type = type
 local print_n = print_n
 local _strVar
 local _space = "      "
+local _empty = ""
 int64.zero = int64.new(0,0)
 uint64.zero = uint64.new(0,0)
 
@@ -66,13 +67,13 @@ end
 
 function log(...)
     if GameSettings.ShowLog then
-        print_n(1, debug.traceback("", 2), ...)
+        print_n(1, debug.traceback(_empty, 2), ...)
     end
 end
 
 function logerr(...)
     if GameSettings.ShowLog then
-        print_n(2, debug.traceback("", 2), ...)
+        print_n(2, debug.traceback(_empty, 2), ...)
     end
 end
 

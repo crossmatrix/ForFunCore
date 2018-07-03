@@ -30,27 +30,28 @@
 		状态不允许从'自己'到'自己'
 		允许只有to的状态
 
-	~ coroutine/stop
+	~ coroutine
+		base: start stop await
+		考虑unity内置协程解决awaitLoadScene
 
-	pool: path
+	~ event
 		
--- todo:
+	~ pool: path
+
 	~ Editor: atlas
 		美术定义图和border文件，从工程外部创建atlas和碎图数据（保证unity内无多余资源）
 		unity内切割出sprite
-
-	~ bundletool
-	~ resourceCtrl
 	
+	~ bundletool
+	~ resourceCtrl	
+
 	~ 不用tolua的Translator，1.id不方便自己管理 2.很多不需要对象被缓存 3.非静态调用，lock，慢
 		Util
 		ObjectCache
-		GameProxy
 	~ 目标1：清空translator里的objectpool和map，Instantiate尚未处理
 	~ 目标2：清理ptr（Obj类和资源类）
 	目标3：枚举
-	
-	
+
 
 	uiMgr
 	uiCtrl
@@ -70,15 +71,9 @@
 		层级（包括夹杂粒子） -> uimgr
 		自动关闭之前ui		 -> uimgr
 
-	考虑移除LU，直接使用Util
-
 	dotween/uitween
 
 	Editor: ui动静/动频率检查
-
-	查看luajit所做优化
-	使用luajit最新版
-	gc事件
 
 	ui-effect
 	frame-anim(ui/not ui)
@@ -152,9 +147,9 @@
 -- local a = "a b cd"
 -- local b = "a   b  c d   "
 -- local c = "a;b;;d"
--- -- local rs = string.split(a, " ")
--- -- local rs = string.split(b, " ")
--- -- local rs = string.split(b, "  ")
+-- local rs = string.split(a, " ")
+-- local rs = string.split(b, " ")
+-- local rs = string.split(b, "  ")
 -- local rs = string.split(c, ";")
 -- for k, v in ipairs(rs) do
 -- 	print(k, "-" .. v .. "-")
@@ -282,7 +277,6 @@
 	c#: LogError/LogExc Debugger.LogError/LogExc throw 直接错误
 	in co
 ]]
----[[
 -- function Test1()
 --     logerr("test1 logerr")
 --     log("test1 log")
@@ -326,9 +320,9 @@
 --     int[] a = new int[3];
 --     int b = a[4];
 -- }
---]]
+
 -- coMgr:start(function()
-	-- log(1)
+-- 	log(1)
 
 	-- Test1()
 	-- Test2()
@@ -352,7 +346,7 @@
 	-- 类型：LuaDLL.luaL_throw(L, "invalid arguments to ctor method: UnityEngine.GameObject.New")
 	-- local com = obj:GetComponent(123)
 
-	-- log(2)
+-- 	log(2)
 -- end)
 
 
@@ -483,7 +477,6 @@
 -- fsm:play(10)
 -- log(fsm.current)
 
-
 -- log(fsm:can("eat"))
 -- log(fsm:can("rest"))
 -- log(fsm:can("play"))
@@ -545,10 +538,10 @@
 -- 	log(2)
 -- 	-- coMgr:proc(co, 10, 20, 30)
 
--- 	-- coMgr:start(function()
--- 	-- 	coMgr:awaitTime(6)
--- 	-- 	coMgr:proc(co, 10, 20, 30)
--- 	-- end)
+-- 	coMgr:start(function()
+-- 		coMgr:awaitTime(6)
+-- 		coMgr:proc(co, 10, 20, 30)
+-- 	end)
 -- end
 -- testCallCo3()
 
@@ -620,19 +613,6 @@
 	-- end)
 	-- -- coMgr:stop(co)
 
-	-- 不推荐
-	-- local co
-	-- co = coMgr:newCo(function()
-	-- 	log(1)
-	-- 	coMgr:awaitTime(2)
-
-	-- 	-- coMgr:stop()
-	-- 	coMgr:stop(co)
-	-- 	log(2)
-	-- end)
-	-- coMgr:proc(co)
-	-- -- coMgr:stop(co)
-
 	-- local co = coMgr:newCo(function()
 	-- 	log(2)
 	-- 	coMgr:awaitFrame()
@@ -642,12 +622,13 @@
 	-- 	log(1)
 	-- 	coMgr:proc(co)
 	-- 	coMgr:stop(co)
+	-- 	-- coMgr:stop()
 	-- 	log(4)
 	-- end)
 -- end
 -- testCallCo5()
 
---其他await
+--awaitUntil
 -- local a = 0
 -- local testTb = {}
 -- function testTb:update(t)
@@ -659,6 +640,7 @@
 -- 	coMgr:start(function()
 -- 		log(1)
 -- 		coMgr:awaitUntil(function()
+-- 			log("be called")
 -- 			return a > 5
 -- 		end)
 -- 		log(2)
@@ -666,35 +648,41 @@
 -- end
 -- testCallCo7()
 
---todo: 考虑unity内置协程解决
 --awaitLoadScene
+-- Util.InitResourceCtrl()
+-- coMgr:start(function()
+-- 	coMgr:awaitLoadScene("Scene/Main")
+-- 	UnityEngine.GameObject.Find("Cube"):SetActive(false)
+-- 	log("load Suc", toStr(evMgr))
+-- end)
+
+
+
+--[[
+	event
+]]
+-- local f1 = function(p1, p2)
+-- 	log("aaa", p1, p2)
+-- end
+-- local f2 = function()
+-- 	log("bbb")
+-- end
+-- evMgr:reg("a", f1)
+-- evMgr:reg("a", f2)
+-- evMgr:trig("a", 10, 20)
+
+-- log("--------")
+-- evMgr:cancel("a", f1)
+-- -- evMgr:cancel("a")
+-- evMgr:trig("a", 10, 20)
 
 
 
 --[[
 	pool
 ]]
-
-
-
-do return end
-
--- log(LU:NewObj("go1"))
-
--- function Cls_LU:NewObj(name, parentPtr)
--- 	return Util.Do_NewObj(name, parentPtr or 0)
--- end
-
--- function Cls_LU:NewPref(name, parentPtr)
--- 	return Util.Do_NewPref(name, parentPtr or 0)
--- end
-
-
-
-
-
-
 -- function TestPool()
+-- 	log("test pool")
 -- 	local arg1 = "Model/Eff1"
 -- 	local destroyTime = 3	--回收时间+1
 
@@ -706,8 +694,8 @@ do return end
 	-- local inst1 = pool:spawn(arg1)
 	-- log(2, toStr(pool))
 	-- coMgr:awaitTime(2)
-	-- LU:SetActive(inst1.ptr, false)
-	-- LU:SetParent(inst1.ptr, GameDefine.GameProxy)
+	-- Util.SetActive(inst1.ptr, false)
+	-- Util.SetParent(inst1.ptr, GameDefine.ProxyObj)
 	-- pool:despawn(inst1)
 	-- log(3, toStr(pool))
 	-- coMgr:awaitTime(destroyTime)
@@ -747,7 +735,7 @@ do return end
  -- --        //测试3.删除go和ptr
  -- --        objCache.DestroyPtr(ptr);
  -- --    }
-	-- GameProxy.TestDestroy(inst1.ptr)
+	-- Util.TestDestroy(inst1.ptr)
 	-- log(toStr(inst1), toStr(pool))
 	-- -- coMgr:awaitFrame()
 	-- pool:despawn(inst1)
@@ -760,6 +748,7 @@ do return end
 	-- -- coMgr:awaitTime(destroyTime)
 	-- -- log(2, toStr(pool))
 	-- i1 = pool:spawn(arg1)
+	-- log(toStr(i1, i3))
 	-- pool:despawn(i3)
 	-- log(3, toStr(pool))
 	-- pool:despawn(i1)
@@ -768,8 +757,15 @@ do return end
 	-- log(5, toStr(pool))
 -- end
 
+-- Util.InitResourceCtrl()
+-- coMgr:start(function()
+-- 	coMgr:awaitLoadScene("Scene/Main")
+-- 	UnityEngine.GameObject.Find("Cube"):SetActive(false)
+-- 	log("load Suc")
+-- 	TestPool()
+-- end)
 
-
+do return end
 
 function TestUI()
 	UILogin:Open()
@@ -778,30 +774,3 @@ function TestUI()
 	-- coMgr:awaitTime(2)
 	-- UILogin:Open()
 end
-
-
-GameProxy.InitResourceCtrl()
-coMgr:start(function()
-	coMgr:awaitLoadScene("Scene/Main")
-	log("load Suc")
-
-	UnityEngine.GameObject.Find("Cube"):SetActive(false)
-
-	-- TestPool()
-	-- TestFsm()
-	
-	-- pool:spawn("Model/Cube1")
-	-- pool:spawn("Model/Cube2")
-	-- pool:spawn("Model/DefaultMat_Cube")
-	-- pool:spawn("Model/Eff1")
-	-- pool:spawn("Model/Eff2")
-	-- pool:spawn("Model/Monx1")
-	-- pool:spawn("Model/Mony1")
-	-- pool:spawn("Model/Mony2")
-	-- pool:spawn("Model/SameSelfMat_Cube")
-	-- pool:spawn("Model/SameSelfMat_Sphere")
-	-- pool:spawn("Model/Sphere1")
-	-- pool:spawn("Model/Sphere2")
-
-	TestUI()
-end)

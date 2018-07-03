@@ -27,12 +27,12 @@ using System.Collections.Generic;
 using System.Collections;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Text.RegularExpressions;
 
 #if UNITY_EDITOR  
 using UnityEditor;
 using UnityEditor.Callbacks;
 using System.Reflection;
-using System.Text.RegularExpressions;
 #endif
 
 namespace LuaInterface

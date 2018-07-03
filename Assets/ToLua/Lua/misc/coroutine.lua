@@ -1,5 +1,6 @@
 local class = class
 local logerr = logerr
+local evMgr = evMgr
 local Util = Util
 local create = coroutine.create
 local running = coroutine.running
@@ -32,7 +33,7 @@ function Cls_CoMgr:proc(co, ...)
 		local flag, msg = resume(co, ...)
 		self:check(co, flag, msg)
 	else
-		logerr("the co is runing")
+		logerr("the co is running")
 	end
 end
 
@@ -56,7 +57,7 @@ function Cls_CoMgr:stop(co)
 	co = co or envCo
 	if self.m_comap[co] then
 		self.m_comap[co] = nil
-		-- 处理协程内部在最后结束‘自己’的情况
+		-- 处理协程内部在最后结束'自己'的情况
 		if envCo and envCo == co then
 			yield()
 		end
@@ -69,18 +70,11 @@ function Cls_CoMgr:isRunning(co)
 	return self.m_comap[co] ~= nil
 end
 
--- function Cls_CoMgr:awaitDoCo(co, ...)
--- 	self:proc(co, ...)
--- 	while status(co) ~= dead do
--- 		yield()
--- 	end
--- end
-
 -- 等待一个协程结束
 function Cls_CoMgr:awaitCo(f, ...)
 	local co = self:newCo(f)
 	self:proc(co, ...)
-	while status(co) ~= dead do
+	while self:isRunning(co) do
 		yield()
 	end
 end
@@ -100,7 +94,6 @@ function Cls_CoMgr:awaitAll(funcs)
 				break
 			end
 		end
-
 		if not state then
 			break
 		end
@@ -134,11 +127,19 @@ function Cls_CoMgr:awaitWWW()
 end
 
 function Cls_CoMgr:awaitLoadScene(scenePath)
-	local ptr = Util.LoadScene(scenePath)
-	while Util.AOIsDone(ptr) == 0 do
+	local loop = true
+	local co = running()
+	evMgr:reg(scenePath, function()
+		loop = false
+		-- 避免帧尾判断导致多等待一帧
+		local flag, msg = resume(co)
+		self:check(co, flag, msg)
+	end)
+	Util.LoadScene(scenePath)
+	while loop do
 		yield()
 	end
-	Util.ClearPtr(ptr)
+	evMgr:cancel(scenePath)
 end
 
 coMgr = Cls_CoMgr.new()

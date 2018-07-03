@@ -14,6 +14,8 @@ public class LuaRun : IGeneral
     private LuaLooper _loop;
     private LuaTable _profiler = null;
 
+    private Dictionary<string, LuaFunction> _refFunc;
+
     public LuaRun() {
         LuaRun.curInst = this;
     }
@@ -41,6 +43,8 @@ public class LuaRun : IGeneral
 
         _loop = hostObj.AddComponent<LuaLooper>();
         _loop.luaState = _luaState;
+
+        _refFunc = new Dictionary<string, LuaFunction>();
     }
 
     public void _Start()
@@ -57,6 +61,8 @@ public class LuaRun : IGeneral
     {
         if (_luaState != null)
         {
+            _refFunc.Clear();
+
             LuaState state = _luaState;
             _luaState = null;
 
@@ -70,6 +76,14 @@ public class LuaRun : IGeneral
 
             state.Dispose();
         }
+    }
+
+    public void TrigEv(string name) {
+        LuaFunction lFunc = GetLuaFunc("trigForCS");
+        lFunc.BeginPCall();
+        lFunc.Push(name);
+        lFunc.PCall();
+        lFunc.EndPCall();
     }
 
     public void AttachProfiler()
@@ -89,6 +103,22 @@ public class LuaRun : IGeneral
             _profiler.Dispose();
             LuaProfiler.Clear();
         }
+    }
+
+    private LuaFunction GetLuaFunc(string name)
+    {
+        LuaFunction lFunc;
+        if (!_refFunc.TryGetValue(name, out lFunc)) {
+            lFunc = _luaState.GetFunction(name);
+            if (lFunc != null)
+            {
+                _refFunc.Add(name, lFunc);
+            }
+            else {
+                throw new LuaException("not find luafunction: " + name);
+            }
+        }
+        return lFunc;
     }
 
 #if UNITY_EDITOR
