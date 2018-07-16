@@ -15,55 +15,47 @@ public class ObjectCache {
         typeof(Button)
     };
 
-    private Dictionary<int, object> _objectMap;
-    private Queue<int> _unUsedIdQ;
-    private int _recoardFlag;
+    private Dictionary<uint, object> _objectMap;
+    private uint _recoardFlag;
 
     public ObjectCache() {
         curInst = this;
 
         _recoardFlag = 1;
-        _objectMap = new Dictionary<int, object>();
-        _unUsedIdQ = new Queue<int>();
+        _objectMap = new Dictionary<uint, object>();
     }
 
 #if UNITY_EDITOR
-    public Dictionary<int, object> GetMapForEditor() {
+    public Dictionary<uint, object> GetMapForEditor() {
         return _objectMap;
     }
 #endif
 
-    public int NewPtr(object obj) {
-        int id;
-        if(_unUsedIdQ.Count > 0){
-            id = _unUsedIdQ.Dequeue();
-        }else{
-            id = _recoardFlag;
-            _recoardFlag++;
-        }
-        _objectMap[id] = obj;
-        return id;
+    public uint NewPtr(object obj) {
+        uint ptr = _recoardFlag;
+        _objectMap[ptr] = obj;
+        _recoardFlag++;
+        return ptr;
     }
 
-    public void DestroyPtr(int ptr)
+    public void DestroyPtr(uint ptr)
     {
         GameObject go = GetGameObject(ptr);
         ClearPtr(ptr);
         UnityEngine.Object.Destroy(go);
     }
 
-    public void ClearPtr(int ptr) {
+    public void ClearPtr(uint ptr) {
         _objectMap.Remove(ptr);
-        _unUsedIdQ.Enqueue(ptr);
     }
 
-    public bool CheckPtr(int ptr)
+    public bool CheckPtr(uint ptr)
     {
         GetData(ptr);
         return true;
     }
 
-    public int GetPtr(int rootPtr, string loc, int typeVal)
+    public uint GetPtr(uint rootPtr, string loc, int typeVal)
     {
         GameObject root = GetGameObject(rootPtr);
         Transform trans = root.transform.Find(loc);
@@ -83,7 +75,7 @@ public class ObjectCache {
         return NewPtr(_obj);
     }
 
-    public object GetData(int ptr)
+    public object GetData(uint ptr)
     {
         object obj;
         _objectMap.TryGetValue(ptr, out obj);
@@ -94,7 +86,7 @@ public class ObjectCache {
         return obj;
     }
 
-    public GameObject GetGameObject(int ptr)
+    public GameObject GetGameObject(uint ptr)
     {
         object obj = GetData(ptr);
         GameObject rs = obj as GameObject;

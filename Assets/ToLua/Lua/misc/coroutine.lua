@@ -8,6 +8,7 @@ local resume = coroutine.resume
 local yield = coroutine.yield
 local status = coroutine.status
 local dead = "dead"
+local CoState = {Active = 1, DeActive = 2}
 
 local Cls_CoMgr = class()
 
@@ -16,30 +17,20 @@ function Cls_CoMgr:ctor()
 end
 
 function Cls_CoMgr:update(t)
-	for co, _ in pairs(self.m_comap) do
-		local flag, msg = resume(co, t)
-		self:check(co, flag, msg)
-		-- log("co update")
-	end
-end
-
-function Cls_CoMgr:newCo(f)
-	return create(f)
-end
-
-function Cls_CoMgr:proc(co, ...)
-	if not self.m_comap[co] then
-		self.m_comap[co] = true
-		local flag, msg = resume(co, ...)
-		self:check(co, flag, msg)
-	else
-		logerr("the co is running")
+	for co, state in pairs(self.m_comap) do
+		if state == CoState.Active then
+			local flag, msg = resume(co, t)
+			self:check(co, flag, msg)
+		end
+		-- log("...")
 	end
 end
 
 function Cls_CoMgr:start(f, ...)
-	local co = self:newCo(f)
-	self:proc(co, ...)
+	local co = create(f)
+	self.m_comap[co] = CoState.Active
+	local flag, msg = resume(co, ...)
+	self:check(co, flag, msg)
 	return co
 end
 
@@ -53,11 +44,24 @@ function Cls_CoMgr:check(co, flag, msg)
 end
 
 function Cls_CoMgr:stop(co)
+	self:_setState(nil, co)
+end
+
+function Cls_CoMgr:pause(co)
+	self:_setState(CoState.DeActive, co)
+end
+
+function Cls_CoMgr:continue(co)
+	self:_setState(CoState.Active, co)
+end
+
+-- 1:active 2:deactive nil:stop
+function Cls_CoMgr:_setState(state, co)
 	local envCo = running()
 	co = co or envCo
 	if self.m_comap[co] then
-		self.m_comap[co] = nil
-		-- 处理协程内部在最后结束'自己'的情况
+		self.m_comap[co] = state
+		-- 处理紧接着非await的代码
 		if envCo and envCo == co then
 			yield()
 		end
@@ -71,15 +75,26 @@ function Cls_CoMgr:isRunning(co)
 end
 
 -- 等待一个协程结束
-function Cls_CoMgr:awaitCo(f, ...)
-	local co = self:newCo(f)
-	self:proc(co, ...)
+function Cls_CoMgr:awaitDoCo(f, ...)
+	local co = self:start(f, ...)
 	while self:isRunning(co) do
 		yield()
 	end
 end
 
--- 等待多个协程结束（每个都结束了才算）
+-- 等待一个协程结束
+function Cls_CoMgr:awaitCo(co)
+	co = co or running()
+	if self.m_comap[co] then
+		while self:isRunning(co) do
+			yield()
+		end
+	else
+		logerr("the co not exist")
+	end
+end
+
+-- 等待多个协程都结束
 function Cls_CoMgr:awaitAll(funcs)
 	local coTb = {}
 	for i = 1, #funcs do

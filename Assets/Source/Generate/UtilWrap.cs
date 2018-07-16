@@ -11,12 +11,12 @@ public class UtilWrap
 		L.RegFunction("ClearPtr", ClearPtr);
 		L.RegFunction("DestroyPtr", DestroyPtr);
 		L.RegFunction("GetPtr", GetPtr);
+		L.RegFunction("InitResourceCtrl", InitResourceCtrl);
 		L.RegFunction("NewObj", NewObj);
 		L.RegFunction("NewPref", NewPref);
 		L.RegFunction("SetActive", SetActive);
 		L.RegFunction("SetParent", SetParent);
 		L.RegFunction("LoadScene", LoadScene);
-		L.RegFunction("AOIsDone", AOIsDone);
 		L.RegFunction("NewUI", NewUI);
 		L.RegFunction("SetText", SetText);
 		L.RegFunction("InitSR", InitSR);
@@ -35,7 +35,7 @@ public class UtilWrap
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
-			int arg0 = (int)LuaDLL.luaL_checknumber(L, 1);
+			uint arg0 = (uint)LuaDLL.luaL_checknumber(L, 1);
 			bool o = Util.CheckPtr(arg0);
 			LuaDLL.lua_pushboolean(L, o);
 			return 1;
@@ -52,7 +52,7 @@ public class UtilWrap
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
-			int arg0 = (int)LuaDLL.luaL_checknumber(L, 1);
+			uint arg0 = (uint)LuaDLL.luaL_checknumber(L, 1);
 			Util.ClearPtr(arg0);
 			return 0;
 		}
@@ -68,7 +68,7 @@ public class UtilWrap
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
-			int arg0 = (int)LuaDLL.luaL_checknumber(L, 1);
+			uint arg0 = (uint)LuaDLL.luaL_checknumber(L, 1);
 			Util.DestroyPtr(arg0);
 			return 0;
 		}
@@ -84,12 +84,27 @@ public class UtilWrap
 		try
 		{
 			ToLua.CheckArgsCount(L, 3);
-			int arg0 = (int)LuaDLL.luaL_checknumber(L, 1);
+			uint arg0 = (uint)LuaDLL.luaL_checknumber(L, 1);
 			string arg1 = ToLua.CheckString(L, 2);
 			int arg2 = (int)LuaDLL.luaL_checknumber(L, 3);
-			int o = Util.GetPtr(arg0, arg1, arg2);
-			LuaDLL.lua_pushinteger(L, o);
+			uint o = Util.GetPtr(arg0, arg1, arg2);
+			LuaDLL.lua_pushnumber(L, o);
 			return 1;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int InitResourceCtrl(IntPtr L)
+	{
+		try
+		{
+			ToLua.CheckArgsCount(L, 0);
+			Util.InitResourceCtrl();
+			return 0;
 		}
 		catch (Exception e)
 		{
@@ -104,9 +119,9 @@ public class UtilWrap
 		{
 			ToLua.CheckArgsCount(L, 2);
 			string arg0 = ToLua.CheckString(L, 1);
-			int arg1 = (int)LuaDLL.luaL_checknumber(L, 2);
-			int o = Util.NewObj(arg0, arg1);
-			LuaDLL.lua_pushinteger(L, o);
+			uint arg1 = (uint)LuaDLL.luaL_checknumber(L, 2);
+			uint o = Util.NewObj(arg0, arg1);
+			LuaDLL.lua_pushnumber(L, o);
 			return 1;
 		}
 		catch (Exception e)
@@ -120,12 +135,27 @@ public class UtilWrap
 	{
 		try
 		{
-			ToLua.CheckArgsCount(L, 2);
-			string arg0 = ToLua.CheckString(L, 1);
-			int arg1 = (int)LuaDLL.luaL_checknumber(L, 2);
-			int o = Util.NewPref(arg0, arg1);
-			LuaDLL.lua_pushinteger(L, o);
-			return 1;
+			int count = LuaDLL.lua_gettop(L);
+
+			if (count == 1)
+			{
+				string arg0 = ToLua.CheckString(L, 1);
+				uint o = Util.NewPref(arg0);
+				LuaDLL.lua_pushnumber(L, o);
+				return 1;
+			}
+			else if (count == 2)
+			{
+				string arg0 = ToLua.CheckString(L, 1);
+				uint arg1 = (uint)LuaDLL.luaL_checknumber(L, 2);
+				uint o = Util.NewPref(arg0, arg1);
+				LuaDLL.lua_pushnumber(L, o);
+				return 1;
+			}
+			else
+			{
+				return LuaDLL.luaL_throw(L, "invalid arguments to method: Util.NewPref");
+			}
 		}
 		catch (Exception e)
 		{
@@ -139,7 +169,7 @@ public class UtilWrap
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
-			int arg0 = (int)LuaDLL.luaL_checknumber(L, 1);
+			uint arg0 = (uint)LuaDLL.luaL_checknumber(L, 1);
 			bool arg1 = LuaDLL.luaL_checkboolean(L, 2);
 			Util.SetActive(arg0, arg1);
 			return 0;
@@ -156,8 +186,8 @@ public class UtilWrap
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
-			int arg0 = (int)LuaDLL.luaL_checknumber(L, 1);
-			int arg1 = (int)LuaDLL.luaL_checknumber(L, 2);
+			uint arg0 = (uint)LuaDLL.luaL_checknumber(L, 1);
+			uint arg1 = (uint)LuaDLL.luaL_checknumber(L, 2);
 			Util.SetParent(arg0, arg1);
 			return 0;
 		}
@@ -174,26 +204,8 @@ public class UtilWrap
 		{
 			ToLua.CheckArgsCount(L, 1);
 			string arg0 = ToLua.CheckString(L, 1);
-			int o = Util.LoadScene(arg0);
-			LuaDLL.lua_pushinteger(L, o);
-			return 1;
-		}
-		catch (Exception e)
-		{
-			return LuaDLL.toluaL_exception(L, e);
-		}
-	}
-
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int AOIsDone(IntPtr L)
-	{
-		try
-		{
-			ToLua.CheckArgsCount(L, 1);
-			int arg0 = (int)LuaDLL.luaL_checknumber(L, 1);
-			int o = Util.AOIsDone(arg0);
-			LuaDLL.lua_pushinteger(L, o);
-			return 1;
+			Util.LoadScene(arg0);
+			return 0;
 		}
 		catch (Exception e)
 		{
@@ -208,8 +220,8 @@ public class UtilWrap
 		{
 			ToLua.CheckArgsCount(L, 1);
 			string arg0 = ToLua.CheckString(L, 1);
-			int o = Util.NewUI(arg0);
-			LuaDLL.lua_pushinteger(L, o);
+			uint o = Util.NewUI(arg0);
+			LuaDLL.lua_pushnumber(L, o);
 			return 1;
 		}
 		catch (Exception e)
@@ -227,14 +239,14 @@ public class UtilWrap
 
 			if (count == 2)
 			{
-				int arg0 = (int)LuaDLL.luaL_checknumber(L, 1);
+				uint arg0 = (uint)LuaDLL.luaL_checknumber(L, 1);
 				string arg1 = ToLua.CheckString(L, 2);
 				Util.SetText(arg0, arg1);
 				return 0;
 			}
 			else if (count == 3)
 			{
-				int arg0 = (int)LuaDLL.luaL_checknumber(L, 1);
+				uint arg0 = (uint)LuaDLL.luaL_checknumber(L, 1);
 				string arg1 = ToLua.CheckString(L, 2);
 				string arg2 = ToLua.CheckString(L, 3);
 				Util.SetText(arg0, arg1, arg2);
@@ -257,11 +269,11 @@ public class UtilWrap
 		try
 		{
 			ToLua.CheckArgsCount(L, 3);
-			int arg0 = (int)LuaDLL.luaL_checknumber(L, 1);
+			uint arg0 = (uint)LuaDLL.luaL_checknumber(L, 1);
 			string arg1 = ToLua.CheckString(L, 2);
 			SRContainer.DlgWrapItem arg2 = (SRContainer.DlgWrapItem)ToLua.CheckDelegate<SRContainer.DlgWrapItem>(L, 3);
-			int o = Util.InitSR(arg0, arg1, arg2);
-			LuaDLL.lua_pushinteger(L, o);
+			uint o = Util.InitSR(arg0, arg1, arg2);
+			LuaDLL.lua_pushnumber(L, o);
 			return 1;
 		}
 		catch (Exception e)
@@ -276,7 +288,7 @@ public class UtilWrap
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
-			int arg0 = (int)LuaDLL.luaL_checknumber(L, 1);
+			uint arg0 = (uint)LuaDLL.luaL_checknumber(L, 1);
 			int arg1 = (int)LuaDLL.luaL_checknumber(L, 2);
 			Util.RefreshSR(arg0, arg1);
 			return 0;
@@ -293,8 +305,8 @@ public class UtilWrap
 		try
 		{
 			ToLua.CheckArgsCount(L, 3);
-			int arg0 = (int)LuaDLL.luaL_checknumber(L, 1);
-			int arg1 = (int)LuaDLL.luaL_checknumber(L, 2);
+			uint arg0 = (uint)LuaDLL.luaL_checknumber(L, 1);
+			uint arg1 = (uint)LuaDLL.luaL_checknumber(L, 2);
 			bool arg2 = LuaDLL.luaL_checkboolean(L, 3);
 			int o = Util.SRSelect(arg0, arg1, arg2);
 			LuaDLL.lua_pushinteger(L, o);
@@ -315,7 +327,7 @@ public class UtilWrap
 
 			if (count == 3)
 			{
-				int arg0 = (int)LuaDLL.luaL_checknumber(L, 1);
+				uint arg0 = (uint)LuaDLL.luaL_checknumber(L, 1);
 				int arg1 = (int)LuaDLL.luaL_checknumber(L, 2);
 				LuaFunction arg2 = ToLua.CheckLuaFunction(L, 3);
 				Util.SetUIEv(arg0, arg1, arg2);
@@ -323,7 +335,7 @@ public class UtilWrap
 			}
 			else if (count == 4)
 			{
-				int arg0 = (int)LuaDLL.luaL_checknumber(L, 1);
+				uint arg0 = (uint)LuaDLL.luaL_checknumber(L, 1);
 				string arg1 = ToLua.CheckString(L, 2);
 				int arg2 = (int)LuaDLL.luaL_checknumber(L, 3);
 				LuaFunction arg3 = ToLua.CheckLuaFunction(L, 4);
@@ -350,14 +362,14 @@ public class UtilWrap
 
 			if (count == 2)
 			{
-				int arg0 = (int)LuaDLL.luaL_checknumber(L, 1);
+				uint arg0 = (uint)LuaDLL.luaL_checknumber(L, 1);
 				LuaFunction arg1 = ToLua.CheckLuaFunction(L, 2);
 				Util.AddClick(arg0, arg1);
 				return 0;
 			}
 			else if (count == 3)
 			{
-				int arg0 = (int)LuaDLL.luaL_checknumber(L, 1);
+				uint arg0 = (uint)LuaDLL.luaL_checknumber(L, 1);
 				string arg1 = ToLua.CheckString(L, 2);
 				LuaFunction arg2 = ToLua.CheckLuaFunction(L, 3);
 				Util.AddClick(arg0, arg1, arg2);

@@ -605,8 +605,9 @@ namespace LuaInterface
             //{
             //    name = LuaFileUtils.Instance.FindFile(name);
             //}
+            //return "@" + name;
 
-            return "@" + name;
+            return name;
         }
 
         public void DoFile(string fileName)

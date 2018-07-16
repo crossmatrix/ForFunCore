@@ -34,22 +34,22 @@ public class Util : MonoBehaviour
         }
     }
 
-    public static bool CheckPtr(int ptr)
+    public static bool CheckPtr(uint ptr)
     {
         return objCache.CheckPtr(ptr);
     }
 
-    public static void ClearPtr(int ptr)
+    public static void ClearPtr(uint ptr)
     {
         objCache.ClearPtr(ptr);
     }
 
-    public static void DestroyPtr(int ptr)
+    public static void DestroyPtr(uint ptr)
     {
         objCache.DestroyPtr(ptr);
     }
 
-    public static int GetPtr(int rootPtr, string loc, int typeVal)
+    public static uint GetPtr(uint rootPtr, string loc, int typeVal)
     {
         return objCache.GetPtr(rootPtr, loc, typeVal);
     }
@@ -59,7 +59,7 @@ public class Util : MonoBehaviour
         resCtrl.Init();
     }
 
-    public static int NewObj(string name, int parentPtr)
+    public static uint NewObj(string name, uint parentPtr)
     {
         GameObject obj = new GameObject(name);
         if (parentPtr != 0)
@@ -70,7 +70,7 @@ public class Util : MonoBehaviour
         return objCache.NewPtr(obj);
     }
 
-    public static int NewPref(string path, int parentPtr = 0)
+    public static uint NewPref(string path, uint parentPtr = 0)
     {
         GameObject inst = _InstObj(path);
         if (parentPtr != 0)
@@ -81,13 +81,13 @@ public class Util : MonoBehaviour
         return objCache.NewPtr(inst);
     }
 
-    public static void SetActive(int ptr, bool state)
+    public static void SetActive(uint ptr, bool state)
     {
         GameObject _go = objCache.GetGameObject(ptr);
         _go.SetActive(state);
     }
 
-    public static void SetParent(int ptr, int parentPtr)
+    public static void SetParent(uint ptr, uint parentPtr)
     {
         Transform parent = objCache.GetGameObject(parentPtr).transform;
         Transform self = objCache.GetGameObject(ptr).transform;
@@ -109,28 +109,28 @@ public class Util : MonoBehaviour
         LuaRun.curInst.TrigEv(path);
     }
 
-    public static int NewUI(string path)
+    public static uint NewUI(string path)
     {
         GameObject inst = _InstObj(path);
         uiCtrl.AddUI(inst);
         return objCache.NewPtr(inst);
     }
 
-    public static void SetText(int ptr, string content)
+    public static void SetText(uint ptr, string content)
     {
         object obj = objCache.GetData(ptr);
         Text _t = obj as Text;
         _t.text = content;
     }
 
-    public static void SetText(int rootPtr, string loc, string content)
+    public static void SetText(uint rootPtr, string loc, string content)
     {
         GameObject root = objCache.GetGameObject(rootPtr);
         Text _text = root.transform.Find(loc).GetComponent<Text>();
         _text.text = content;
     }
 
-    public static int InitSR(int rootPtr, string loc, SRContainer.DlgWrapItem onWrap)
+    public static uint InitSR(uint rootPtr, string loc, SRContainer.DlgWrapItem onWrap)
     {
         GameObject root = objCache.GetGameObject(rootPtr);
         SRContainer _sr = root.transform.Find(loc).GetComponent<SRContainer>();
@@ -138,14 +138,14 @@ public class Util : MonoBehaviour
         return objCache.NewPtr(_sr);
     }
 
-    public static void RefreshSR(int ptr, int num)
+    public static void RefreshSR(uint ptr, int num)
     {
         object obj = objCache.GetData(ptr);
         SRContainer _sr = obj as SRContainer;
         _sr.Refresh(num);
     }
 
-    public static int SRSelect(int srPtr, int ptr, bool isHl)
+    public static int SRSelect(uint srPtr, uint ptr, bool isHl)
     {
         object obj = objCache.GetData(srPtr);
         SRContainer _sr = obj as SRContainer;
@@ -153,26 +153,26 @@ public class Util : MonoBehaviour
         return _sr.Select(item, isHl);
     }
 
-    public static void SetUIEv(int rootPtr, string loc, int tp, LuaFunction ev)
+    public static void SetUIEv(uint rootPtr, string loc, int tp, LuaFunction ev)
     {
         GameObject root = objCache.GetGameObject(rootPtr);
         GameObject _obj = root.transform.Find(loc).gameObject;
         UICtrl.AddUIEvent(_obj, (EventTriggerType)tp, ev);
     }
 
-    public static void SetUIEv(int ptr, int tp, LuaFunction ev)
+    public static void SetUIEv(uint ptr, int tp, LuaFunction ev)
     {
         GameObject _obj = objCache.GetGameObject(ptr);
         UICtrl.AddUIEvent(_obj, (EventTriggerType)tp, ev);
     }
 
-    public static void AddClick(int ptr, LuaFunction ev)
+    public static void AddClick(uint ptr, LuaFunction ev)
     {
         GameObject _obj = objCache.GetGameObject(ptr);
         UICtrl.AddClick(_obj, ev);
     }
 
-    public static void AddClick(int rootPtr, string loc, LuaFunction ev)
+    public static void AddClick(uint rootPtr, string loc, LuaFunction ev)
     {
         GameObject root = objCache.GetGameObject(rootPtr);
         GameObject _obj = root.transform.Find(loc).gameObject;

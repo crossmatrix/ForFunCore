@@ -79,14 +79,12 @@ end
 
 function Cls_Pool:despawn(inst, container)
 	container = container or self.m_list[inst._flag]
-	if container and container.busy[inst] then
-		if Util.CheckPtr(inst.ptr) then
-			container.busy[inst] = nil
-			container.busyLength = container.busyLength - 1
-			container.idle:push(inst)
-			Util.SetActive(inst.ptr, false)
-			Util.SetParent(inst.ptr, container.box)
-		end
+	if container and container.busy[inst] and Util.CheckPtr(inst.ptr) then
+		container.busy[inst] = nil
+		container.busyLength = container.busyLength - 1
+		container.idle:push(inst)
+		Util.SetActive(inst.ptr, false)
+		Util.SetParent(inst.ptr, container.box)
 	end
 end
 

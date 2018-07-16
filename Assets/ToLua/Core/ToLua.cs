@@ -156,10 +156,13 @@ namespace LuaInterface
 
                     int type = LuaDLL.lua_tointeger(L, 1);
                     string trace = LuaDLL.lua_tostring(L, 2);
-                    string[] lines = trace.Split('\n');
-                    int realLine = 2;
-                    GroupCollection collection = Regex.Match(lines[realLine], @"(\S+):").Groups;
-                    sb.Append(string.Format("[{0}]:", collection[1].Value));
+                    GroupCollection collection = Regex.Match(trace, @"([^\s\]]+)\]?:(\d+)").Groups;
+                    string fileName = collection[1].Value;
+                    string line = collection[2].Value;
+                    if (!fileName.StartsWith("\"")) {
+                        fileName = "\"" + fileName + "\"";
+                    }
+                    sb.Append(string.Format("[{0}]:{1}: ", fileName, line));
 
                     for (int i = 3; i <= n; i++)
                     {
@@ -230,11 +233,11 @@ namespace LuaInterface
 
                     if (!filename.Contains("."))
                     {
-                        sb.Append('[').Append(filename, offset, filename.Length - offset).Append(".lua:").Append(line).Append("]:");
+                        sb.Append("[\"").Append(filename, offset, filename.Length - offset).Append(".lua\"]:").Append(line).Append(": ");
                     }
                     else
                     {
-                        sb.Append('[').Append(filename, offset, filename.Length - offset).Append(':').Append(line).Append("]:");
+                        sb.Append("[\"").Append(filename, offset, filename.Length - offset).Append("\"]:").Append(line).Append(": ");
                     }
 #endif
 

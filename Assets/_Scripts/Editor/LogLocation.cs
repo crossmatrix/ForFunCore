@@ -13,7 +13,7 @@ public class LogLocation : Editor
     private static string _sublimePath = Application.dataPath + "/../Custom/Sublime Text 3/subl.exe";
     private static object _consoleWindow = null;
     private static List<string> _queryPathList = null;
-    private static string _luaPattern = @"([a-zA-Z][^\s\[\:]+?):(\d+)";
+    private static string _luaPattern = string.Format("{0}(.*?){1}]:(\\d+)", "\"", "\"");
     private static string _tracePattern = "stack traceback";
 
     private static object consoleWindow

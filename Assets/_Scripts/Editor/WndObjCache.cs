@@ -19,7 +19,7 @@ public class WndObjCache : EditorWindow {
         var map = ObjectCache.curInst.GetMapForEditor();
         pos = GUILayout.BeginScrollView(pos, false, true, GUILayout.ExpandHeight(true));
         if (Application.isPlaying) {
-            foreach (KeyValuePair<int, object> kv in map)
+            foreach (KeyValuePair<uint, object> kv in map)
             {
                 GUILayout.BeginHorizontal();
                 GUILayout.Label(kv.Key.ToString());
