@@ -1,5 +1,3 @@
--- log("---------------------------------")
-
 --[[
 	~ mem fps
 	~ Editor: create lua
@@ -296,27 +294,27 @@
 --     abcd()
 -- end
 
--- public void Test5() {
+-- public static void Test5() {
 --     UnityEngine.Debug.LogError("test5");
 -- }
 
--- public void Test6() {
+-- public static void Test6() {
 --     Debugger.LogError("test6");
 -- }
 
--- public void Test7() {
+-- public static void Test7() {
 --     Debug.LogException(new System.Exception("test7"));
 -- }
 
--- public void Test8() {
+-- public static void Test8() {
 --     Debugger.LogException(new System.Exception("test8"));
 -- }
 
--- public void Test9() {
+-- public static void Test9() {
 --     throw new System.Exception("test9");
 -- }
 
--- public void Test10() {
+-- public static void Test10() {
 --     int[] a = new int[3];
 --     int b = a[4];
 -- }
@@ -338,12 +336,12 @@
 	-- Util.Test9()
 	-- Util.Test10()
 
-	-- 类型：LuaDLL.toluaL_exception(L, e, o, "attempt to index transform on a nil value");
+	-- -- 类型：LuaDLL.toluaL_exception(L, e, o, "attempt to index transform on a nil value");
 	-- local obj = UnityEngine.GameObject.New()
 	-- UnityEngine.GameObject.Destroy(obj)
 	-- local trans = obj.transform
 
-	-- 类型：LuaDLL.luaL_throw(L, "invalid arguments to ctor method: UnityEngine.GameObject.New")
+	-- -- 类型：LuaDLL.luaL_throw(L, "invalid arguments to ctor method: UnityEngine.GameObject.New")
 	-- local com = obj:GetComponent(123)
 
 -- 	log(2)
@@ -494,9 +492,8 @@
 -- function testCallCo1(p1, p2)
 -- 	log(1)
 -- 	coMgr:start(function()
--- 		-- coMgr:awaitFrame()
+-- 		coMgr:awaitFrame()
 -- 		log(2)
--- 		-- local a = 10 .. nil
 -- 		coMgr:awaitTime(2)
 -- 		log(3, p1 + p2)
 -- 		coMgr:awaitTime(2)
@@ -506,7 +503,7 @@
 -- end
 -- testCallCo1(10, 20)
 
---非闭包
+-- 非闭包
 -- function abc(p1, p2)
 -- 	log(p1)
 -- 	coMgr:awaitTime(2)
@@ -519,66 +516,60 @@
 -- end
 -- testCallCo2()
 
--- 自定义调用（不推荐）
--- 检测重复调用
--- function testCallCo3()
--- 	local co
--- 	co = coMgr:newCo(function(p1, p2, p3)
--- 		log(p1)
--- 		coMgr:awaitFrame(80)
--- 		log(p2)
--- 		coMgr:awaitTime(2)
--- 		log(p3)
-
--- 		-- coMgr:proc(co, p1, p2, p3)
--- 	end)
-
+-- 暂停和继续
+-- local co = coMgr:start(function()
 -- 	log(1)
--- 	coMgr:proc(co, 10, 20, 30)
+-- 	coMgr:awaitTime(2)
+-- 	coMgr:pause()
 -- 	log(2)
--- 	-- coMgr:proc(co, 10, 20, 30)
+-- 	coMgr:awaitTime(2)
+-- 	log(3)
+-- end)
 
--- 	coMgr:start(function()
--- 		coMgr:awaitTime(6)
--- 		coMgr:proc(co, 10, 20, 30)
--- 	end)
+-- local temp = {}
+-- function temp:update(t)
+-- 	if UnityEngine.Input.GetKeyDown(UnityEngine.KeyCode.A) then
+-- 		coMgr:continue(co)
+-- 	end
 -- end
--- testCallCo3()
+-- LuaDrive:register(temp)
 
---等其他协程
--- function testCallCo4()
--- 	local f1 = function(a, b)
--- 		log("co 1", a, b)
--- 		coMgr:awaitTime(1.5)
--- 		log("co 1 finished")
--- 	end
--- 	local f2 = function()
--- 		log("co 2")
--- 		coMgr:awaitTime(1.5)
--- 		-- local a = 10 .. nil
--- 		log("co 2 finished")
--- 	end
--- 	local f3 = function()
--- 		log("co 3")
--- 		coMgr:awaitTime(1.5)
--- 		log("co 3 finished")
--- 	end
-
--- 	log(1)
--- 	coMgr:start(function()
--- 		log(2)
--- 		coMgr:awaitCo(f1, 10, 20)
--- 		log(3)
--- 		coMgr:awaitCo(f2)
--- 		log(4)
--- 		coMgr:awaitCo(f3)
--- 		log(5)
--- 	end)
--- 	log(6)
+-- 等其他协程
+-- local f1 = function(a, b)
+-- 	log("co 1", a, b)
+-- 	coMgr:awaitTime(2)
+-- 	log("co 1 finished")
 -- end
--- testCallCo4()
+-- local f2 = function()
+-- 	log("co 2")
+-- 	coMgr:pause()
+-- 	coMgr:awaitTime(2)
+-- 	-- local a = 10 .. nil
+-- 	log("co 2 finished")
+-- end
 
---等待多个协程完成
+-- local co_f2
+-- log(1)
+-- coMgr:start(function()
+-- 	log(2)
+-- 	coMgr:awaitDoCo(f1, 10, 20)
+-- 	log(3)
+-- 	co_f2 = coMgr:start(f2)
+-- 	coMgr:awaitCo(co_f2)
+-- 	log(4)
+-- end)
+-- log(5)
+
+-- local temp = {}
+-- function temp:update(t)
+-- 	if UnityEngine.Input.GetKeyDown(UnityEngine.KeyCode.A) then
+-- 		log(co_f2)
+-- 		coMgr:continue(co_f2)
+-- 	end
+-- end
+-- LuaDrive:register(temp)
+
+-- 等待多个协程完成
 -- function testCallCo6()
 -- 	local f1 = function()
 -- 		coMgr:awaitTime(2)
@@ -596,37 +587,29 @@
 -- end
 -- testCallCo6()
 
---内部中断，外部中断
--- function testCallCo5()
-	-- local co
-	-- co = coMgr:start(function()
-	-- 	log(1)
-	-- 	-- coMgr:stop()
-	-- 	-- coMgr:stop(co)
-	-- 	coMgr:awaitTime(2)
-	-- 	log(2)
+-- 一个搞笑的死循环
+-- coMgr:start(function()
+-- 	log(1)
+-- 	coMgr:awaitCo()
+-- 	log(2)
+-- end)
 
-	-- 	-- coMgr:stop(co)
-	-- 	coMgr:awaitFrame()
-	-- 	-- coMgr:stop()
-	-- 	log(3)
-	-- end)
-	-- -- coMgr:stop(co)
+-- 内部中断，外部中断
+-- todo: stopco 递归关闭所有内部co
+local co
+co = coMgr:start(function()
+	log(1)
+	-- coMgr:stop()
+	-- coMgr:stop(co)
+	coMgr:awaitTime(2)
+	log(2)
 
-	-- local co = coMgr:newCo(function()
-	-- 	log(2)
-	-- 	coMgr:awaitFrame()
-	-- 	log(3)
-	-- end)
-	-- coMgr:start(function()
-	-- 	log(1)
-	-- 	coMgr:proc(co)
-	-- 	coMgr:stop(co)
-	-- 	-- coMgr:stop()
-	-- 	log(4)
-	-- end)
--- end
--- testCallCo5()
+	-- coMgr:stop(co)
+	coMgr:awaitFrame()
+	-- coMgr:stop()
+	log(3)
+end)
+-- coMgr:stop(co)
 
 --awaitUntil
 -- local a = 0

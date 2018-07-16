@@ -3,5 +3,5 @@
 }
 
 GameDefine = {
-	ProxyObj = 1
+	ProxyObj = 1,
 }
