@@ -14,11 +14,13 @@ public class ResourceCtrl
     public static string localArtPath = "Assets/_Art/";
     public static string shaderABName = "Shader";
     public static string artABName = "Art";
+    public static string atlasABName = "UIAtlas";
 
     private AssetBundleManifest _manifest;
     private Dictionary<string, AssetBundle> _dpdDic;
     private Dictionary<string, Object> _resourceDic;
     private Dictionary<string, string> _sceneDic;
+    private Dictionary<string, Sprite> _spDic;
 
     public ResourceCtrl() {
         curInst = this;
@@ -30,6 +32,7 @@ public class ResourceCtrl
         _dpdDic = new Dictionary<string, AssetBundle>();
         _resourceDic = new Dictionary<string, Object>();
         _sceneDic = new Dictionary<string, string>();
+        _spDic = new Dictionary<string, Sprite>();
         AssetBundle bundle = AssetBundle.LoadFromFile(bundlePath + bundleFolderName);
         _manifest = bundle.LoadAsset<AssetBundleManifest>("AssetBundleManifest");
 
@@ -39,27 +42,32 @@ public class ResourceCtrl
 
     public Object GetResource(string path)
     {
-        if (!Path.HasExtension(path)) {
-            path = Path.ChangeExtension(path, ".prefab");
+        string rsPath = path;
+        if (!Path.HasExtension(path))
+        {
+            rsPath = Path.ChangeExtension(path, ".prefab");
         }
+        rsPath = rsPath.ToLower();
+
         Object asset;
-        if (!_resourceDic.TryGetValue(path, out asset)) {
-            string rsName;
-            AssetBundle bundle = GetBundle(path, out rsName);
+        if (!_resourceDic.TryGetValue(rsPath, out asset)) {
+            string bdName = rsPath.Substring(0, rsPath.LastIndexOf("."));
+            string rsName = Path.GetFileName(rsPath);
+            AssetBundle bundle = GetBundle(bdName);
             asset = bundle.LoadAsset<Object>(rsName);
             bundle.Unload(false);
-            _resourceDic.Add(path, asset);
+            _resourceDic.Add(rsPath, asset);
         }
         return asset;
     }
 
     public AsyncOperation LoadScene(string path)
     {
+        path = path.ToLower();
         string scenePath;
         if (!_sceneDic.TryGetValue(path, out scenePath))
         {
-            string rsName;
-            AssetBundle bundle = GetBundle(path, out rsName);
+            AssetBundle bundle = GetBundle(path);
             scenePath = bundle.GetAllScenePaths()[0];
             _sceneDic.Add(path, scenePath);
         }
@@ -67,21 +75,32 @@ public class ResourceCtrl
         return operation;
     }
 
-    private AssetBundle GetBundle(string path, out string rsName) {
-        string relativePath = path.ToLower();
-        string dir = Path.GetDirectoryName(relativePath);
-        string fileName = Path.GetFileNameWithoutExtension(relativePath);
-        string extension = Path.GetExtension(fileName);
-        string bundleName = dir + "/" + fileName;
-        foreach (string dpdName in _manifest.GetAllDependencies(bundleName))
+    public Sprite GetSprite(string spritePath) {
+        Sprite rs;
+        if (!_spDic.TryGetValue(spritePath, out rs)) {
+            string[] temp = spritePath.Split('/');
+            string atlasName = temp[0];
+            string bdName = (atlasABName + "/" + atlasName).ToLower();
+            AssetBundle bundle = LoadDependency(bdName);
+            Sprite[] allSprite = bundle.LoadAllAssets<Sprite>();
+            foreach (Sprite sp in allSprite) {
+                _spDic.Add(atlasName + "/" + sp.name, sp);
+            }
+            rs = _spDic[spritePath];
+        }
+        return rs;
+    }
+
+    private AssetBundle GetBundle(string path)
+    {
+        foreach (string dpdName in _manifest.GetAllDependencies(path))
         {
             LoadDependency(dpdName);
         }
-        rsName = fileName + extension;
-        return AssetBundle.LoadFromFile(bundlePath + bundleName);
+        return AssetBundle.LoadFromFile(bundlePath + path);
     }
 
-    private void LoadDependency(string dpdName)
+    private AssetBundle LoadDependency(string dpdName)
     {
         AssetBundle dpdBundle;
         if (!_dpdDic.TryGetValue(dpdName, out dpdBundle))
@@ -89,5 +108,6 @@ public class ResourceCtrl
             dpdBundle = AssetBundle.LoadFromFile(bundlePath + dpdName);
             _dpdDic.Add(dpdName, dpdBundle);
         }
+        return dpdBundle;
     }
 }

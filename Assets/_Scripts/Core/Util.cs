@@ -59,54 +59,28 @@ public class Util : MonoBehaviour
         resCtrl.Init();
     }
 
-    public static uint NewObj(string name, uint parentPtr)
+    public static uint NewObj(string name, uint parentPtr = 0, int active = 0)
     {
         GameObject obj = new GameObject(name);
-        if (parentPtr != 0)
-        {
-            Transform parent = objCache.GetGameObject(parentPtr).transform;
-            obj.transform.SetParent(parent, false);
-        }
+        _SetObject(obj, active, parentPtr);
         return objCache.NewPtr(obj);
     }
 
-    public static uint NewPref(string path, uint parentPtr = 0)
+    public static uint NewPref(string path, uint parentPtr = 0, int active = 0)
     {
         GameObject inst = _InstObj(path);
-        if (parentPtr != 0)
-        {
-            Transform parent = objCache.GetGameObject(parentPtr).transform;
-            inst.transform.SetParent(parent, false);
-        }
+        _SetObject(inst, active, parentPtr);
         return objCache.NewPtr(inst);
     }
 
-    public static void SetActive(uint ptr, bool state)
-    {
-        GameObject _go = objCache.GetGameObject(ptr);
-        _go.SetActive(state);
-    }
-
-    public static void SetParent(uint ptr, uint parentPtr)
-    {
-        Transform parent = objCache.GetGameObject(parentPtr).transform;
-        Transform self = objCache.GetGameObject(ptr).transform;
-        self.SetParent(parent, false);
+    public static void SetObject(uint ptr, int active = 0, uint parentPtr = 0) {
+        _SetObject(objCache.GetGameObject(ptr), active, parentPtr);
     }
 
     public static void LoadScene(string path)
     {
         AsyncOperation ao = resCtrl.LoadScene(path);
-        proxy.StartCo(WaitLoadScene(ao, path));
-    }
-
-    private static IEnumerator WaitLoadScene(AsyncOperation ao, string path)
-    {
-        yield return new WaitUntil(() =>
-        {
-            return ao.isDone;
-        });
-        LuaRun.curInst.TrigEv(path);
+        proxy.StartCo(_WaitLoadScene(ao, path));
     }
 
     public static uint NewUI(string path)
@@ -126,43 +100,57 @@ public class Util : MonoBehaviour
     public static void SetText(uint rootPtr, string loc, string content)
     {
         GameObject root = objCache.GetGameObject(rootPtr);
-        Text _text = root.transform.Find(loc).GetComponent<Text>();
-        _text.text = content;
+        Text _t = root.transform.Find(loc).GetComponent<Text>();
+        _t.text = content;
     }
 
-    public static uint InitSR(uint rootPtr, string loc, SRContainer.DlgWrapItem onWrap)
-    {
-        GameObject root = objCache.GetGameObject(rootPtr);
-        SRContainer _sr = root.transform.Find(loc).GetComponent<SRContainer>();
-        _sr.Init(onWrap);
-        return objCache.NewPtr(_sr);
-    }
-
-    public static void RefreshSR(uint ptr, int num)
+    public static void SetImage(uint ptr, string spritePath)
     {
         object obj = objCache.GetData(ptr);
-        SRContainer _sr = obj as SRContainer;
-        _sr.Refresh(num);
+        Image _img = obj as Image;
+        _img.sprite = resCtrl.GetSprite(spritePath);
     }
 
-    public static int SRSelect(uint srPtr, uint ptr, bool isHl)
+    public static void SetImage(uint rootPtr, string loc, string spritePath)
     {
-        object obj = objCache.GetData(srPtr);
-        SRContainer _sr = obj as SRContainer;
-        GameObject item = objCache.GetGameObject(ptr);
-        return _sr.Select(item, isHl);
+        GameObject root = objCache.GetGameObject(rootPtr);
+        Image _img = root.transform.Find(loc).GetComponent<Image>();
+        _img.sprite = resCtrl.GetSprite(spritePath);
+    }
+
+    //public static uint InitSR(uint rootPtr, string loc, SRContainer.DlgWrapItem onWrap)
+    //{
+    //    GameObject root = objCache.GetGameObject(rootPtr);
+    //    SRContainer _sr = root.transform.Find(loc).GetComponent<SRContainer>();
+    //    _sr.Init(onWrap);
+    //    return objCache.NewPtr(_sr);
+    //}
+
+    //public static void RefreshSR(uint ptr, int num)
+    //{
+    //    object obj = objCache.GetData(ptr);
+    //    SRContainer _sr = obj as SRContainer;
+    //    _sr.Refresh(num);
+    //}
+
+    //public static int SRSelect(uint srPtr, uint ptr, bool isHl)
+    //{
+    //    object obj = objCache.GetData(srPtr);
+    //    SRContainer _sr = obj as SRContainer;
+    //    GameObject item = objCache.GetGameObject(ptr);
+    //    return _sr.Select(item, isHl);
+    //}
+
+    public static void SetUIEv(uint ptr, int tp, LuaFunction ev)
+    {
+        GameObject _obj = objCache.GetGameObject(ptr);
+        UICtrl.AddUIEvent(_obj, (EventTriggerType)tp, ev);
     }
 
     public static void SetUIEv(uint rootPtr, string loc, int tp, LuaFunction ev)
     {
         GameObject root = objCache.GetGameObject(rootPtr);
         GameObject _obj = root.transform.Find(loc).gameObject;
-        UICtrl.AddUIEvent(_obj, (EventTriggerType)tp, ev);
-    }
-
-    public static void SetUIEv(uint ptr, int tp, LuaFunction ev)
-    {
-        GameObject _obj = objCache.GetGameObject(ptr);
         UICtrl.AddUIEvent(_obj, (EventTriggerType)tp, ev);
     }
 
@@ -185,5 +173,30 @@ public class Util : MonoBehaviour
         GameObject inst = GameObject.Instantiate(rs);
         inst.name = rs.name;
         return inst;
+    }
+
+    private static IEnumerator _WaitLoadScene(AsyncOperation ao, string path)
+    {
+        yield return new WaitUntil(() =>
+        {
+            return ao.isDone;
+        });
+        LuaRun.curInst.TrigEv(path);
+    }
+
+    private static void _SetObject(GameObject obj, int active, uint parentPtr)
+    {
+        if (active == 1)
+        {
+            obj.SetActive(true);
+        }
+        else if (active == 2) {
+            obj.SetActive(false);
+        }
+        if (parentPtr != 0)
+        {
+            Transform parent = objCache.GetGameObject(parentPtr).transform;
+            obj.transform.SetParent(parent, false);
+        }
     }
 }

@@ -8,7 +8,8 @@ local resume = coroutine.resume
 local yield = coroutine.yield
 local status = coroutine.status
 local dead = "dead"
-local CoState = {Active = 1, DeActive = 2}
+local Active = 1
+local DeActive = 2
 
 local Cls_CoMgr = class()
 
@@ -18,7 +19,7 @@ end
 
 function Cls_CoMgr:update(t)
 	for co, state in pairs(self.m_comap) do
-		if state == CoState.Active then
+		if state == Active then
 			local flag, msg = resume(co, t)
 			self:check(co, flag, msg)
 		end
@@ -28,7 +29,7 @@ end
 
 function Cls_CoMgr:start(f, ...)
 	local co = create(f)
-	self.m_comap[co] = CoState.Active
+	self.m_comap[co] = Active
 	local flag, msg = resume(co, ...)
 	self:check(co, flag, msg)
 	return co
@@ -43,16 +44,17 @@ function Cls_CoMgr:check(co, flag, msg)
 	end
 end
 
+-- 没有递归关闭子携程
 function Cls_CoMgr:stop(co)
 	self:_setState(nil, co)
 end
 
 function Cls_CoMgr:pause(co)
-	self:_setState(CoState.DeActive, co)
+	self:_setState(DeActive, co)
 end
 
 function Cls_CoMgr:continue(co)
-	self:_setState(CoState.Active, co)
+	self:_setState(Active, co)
 end
 
 -- 1:active 2:deactive nil:stop

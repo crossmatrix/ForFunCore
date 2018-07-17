@@ -46,9 +46,8 @@ function Cls_Pool:searchFromCache(arg)
 	if container then
 		targ = container.idle:shift()
 	else
-		container = {busy = {}, idle = list:new(), busyLength = 0, box = nil}
+		container = {busy = {}, idle = list:new(), busyLength = 0, box = Util.NewObj("[rs]" .. arg, self.m_rootPtr)}
 		self.m_list[arg] = container
-		container.box = Util.NewObj("[rs]" .. arg, self.m_rootPtr)
 	end
 	return targ
 end
@@ -62,7 +61,7 @@ end
 function Cls_Pool:_pathSpawn(name)
 	local targ = self:searchFromCache(name)
 	if not targ then
-		targ = {ptr = Util.NewPref(name, 0), _count = 0, _flag = name}
+		targ = {ptr = Util.NewPref(name), _count = 0, _flag = name}
 	else
 		targ = {ptr = targ.ptr, _count = 0, _flag = name}
 	end
@@ -71,7 +70,7 @@ function Cls_Pool:_pathSpawn(name)
 end
 
 function Cls_Pool:_pushToBusy(targ)
-	Util.SetActive(targ.ptr, true)
+	Util.SetObject(targ.ptr, 1)
 	local container = self.m_list[targ._flag]
 	container.busy[targ] = true
 	container.busyLength = container.busyLength + 1
@@ -83,8 +82,7 @@ function Cls_Pool:despawn(inst, container)
 		container.busy[inst] = nil
 		container.busyLength = container.busyLength - 1
 		container.idle:push(inst)
-		Util.SetActive(inst.ptr, false)
-		Util.SetParent(inst.ptr, container.box)
+		Util.SetObject(inst.ptr, 2, container.box)
 	end
 end
 

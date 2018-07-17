@@ -50,7 +50,6 @@
 	~ 目标2：清理ptr（Obj类和资源类）
 	目标3：枚举
 
-
 	uiMgr
 	uiCtrl
 	ui
@@ -594,24 +593,45 @@
 -- 	log(2)
 -- end)
 
--- 内部中断，外部中断
--- todo: stopco 递归关闭所有内部co
-local co
-co = coMgr:start(function()
-	log(1)
-	-- coMgr:stop()
-	-- coMgr:stop(co)
-	coMgr:awaitTime(2)
-	log(2)
-
-	-- coMgr:stop(co)
-	coMgr:awaitFrame()
-	-- coMgr:stop()
-	log(3)
-end)
+-- 内外stop
+-- local co
+-- co = coMgr:start(function()
+-- 	log(1)
+-- 	-- coMgr:stop()
+-- 	-- coMgr:stop(co)
+-- 	coMgr:awaitTime(2)
+-- 	log(2)
+-- 	-- coMgr:stop(co)
+-- 	coMgr:awaitFrame()
+-- 	-- coMgr:stop()
+-- 	log(3)
+-- end)
 -- coMgr:stop(co)
 
---awaitUntil
+-- todo: stopco 递归关闭所有内部co
+-- local f1 = function()
+-- 	log("f1")
+-- 	coMgr:awaitTime(2)
+-- 	log("f1 finished...")
+-- end
+-- local f2 = function()
+-- 	log("f2")
+-- 	coMgr:awaitTime(3)
+-- 	log("f2 finished...")
+-- end
+-- local co
+-- co = coMgr:start(function()
+-- 	log(1)
+-- 	coMgr:start(function()
+-- 		coMgr:awaitFrame()
+-- 		coMgr:stop(co)
+-- 		log(3)
+-- 	end)
+-- 	coMgr:awaitAll({f1, f2})
+-- 	log(2)
+-- end)
+
+-- awaitUntil
 -- local a = 0
 -- local testTb = {}
 -- function testTb:update(t)
@@ -624,14 +644,14 @@ end)
 -- 		log(1)
 -- 		coMgr:awaitUntil(function()
 -- 			log("be called")
--- 			return a > 5
+-- 			return a > 3
 -- 		end)
 -- 		log(2)
 -- 	end)
 -- end
 -- testCallCo7()
 
---awaitLoadScene
+-- awaitLoadScene
 -- Util.InitResourceCtrl()
 -- coMgr:start(function()
 -- 	coMgr:awaitLoadScene("Scene/Main")
@@ -669,16 +689,11 @@ end)
 -- 	local arg1 = "Model/Eff1"
 -- 	local destroyTime = 3	--回收时间+1
 
-	-- pool:spawn()
-	-- local inst1 = pool:spawn(arg1)
-	-- log(inst1.abc)
-
 	-- log(1, toStr(pool))
 	-- local inst1 = pool:spawn(arg1)
 	-- log(2, toStr(pool))
 	-- coMgr:awaitTime(2)
-	-- Util.SetActive(inst1.ptr, false)
-	-- Util.SetParent(inst1.ptr, GameDefine.ProxyObj)
+	-- Util.SetObject(inst1.ptr, 2, GameDefine.ProxyObj)
 	-- pool:despawn(inst1)
 	-- log(3, toStr(pool))
 	-- coMgr:awaitTime(destroyTime)
@@ -686,6 +701,7 @@ end)
 
 	-- log("->inst", inst1, toStr(inst1))
 	-- log("->pool", pool, toStr(pool))
+	-- -- Util.SetObject(inst1.ptr, 1)
 	-- local inst2 = pool:spawn(arg1)
 	-- log("->pool", toStr(pool))
 	-- local inst3 = pool:spawn(arg1)
@@ -699,7 +715,7 @@ end)
 	-- coMgr:awaitTime(destroyTime)	
 	-- log("->1-1", toStr(pool))
 	-- pool:spawn(arg1)
-	-- log(">1-2", toStr(pool))
+	-- log("->1-2", toStr(pool))
 
 	-- pool:despawn(inst1)
 	-- log("->2", toStr(pool))
@@ -709,7 +725,7 @@ end)
 	
 	-- local inst1 = pool:spawn(arg1)
 	-- coMgr:awaitTime(2)
-	-- -- public static void TestDestroy(int ptr) {
+	-- -- public static void TestDestroy(uint ptr) {
 	-- -- 	//测试1.删除go
  -- --        GameObject obj = objCache.GetGameObject(ptr);
  -- --        Object.Destroy(obj);
@@ -733,22 +749,9 @@ end)
 	-- i1 = pool:spawn(arg1)
 	-- log(toStr(i1, i3))
 	-- pool:despawn(i3)
-	-- log(3, toStr(pool))
-	-- pool:despawn(i1)
-	-- log(4, toStr(pool))
-	-- pool:despawn(i2)
-	-- log(5, toStr(pool))
 -- end
 
--- Util.InitResourceCtrl()
--- coMgr:start(function()
--- 	coMgr:awaitLoadScene("Scene/Main")
--- 	UnityEngine.GameObject.Find("Cube"):SetActive(false)
--- 	log("load Suc")
--- 	TestPool()
--- end)
 
-do return end
 
 function TestUI()
 	UILogin:Open()
@@ -757,3 +760,20 @@ function TestUI()
 	-- coMgr:awaitTime(2)
 	-- UILogin:Open()
 end
+
+Util.InitResourceCtrl()
+coMgr:start(function()
+	coMgr:awaitLoadScene("Scene/Main")
+	UnityEngine.GameObject.Find("Cube"):SetActive(false)
+	log("load Suc")
+	
+	-- TestPool()
+	TestUI()
+end)
+
+
+
+--ui
+--enum
+--net/pb
+--event

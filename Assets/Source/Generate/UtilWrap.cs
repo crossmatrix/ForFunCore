@@ -14,14 +14,11 @@ public class UtilWrap
 		L.RegFunction("InitResourceCtrl", InitResourceCtrl);
 		L.RegFunction("NewObj", NewObj);
 		L.RegFunction("NewPref", NewPref);
-		L.RegFunction("SetActive", SetActive);
-		L.RegFunction("SetParent", SetParent);
+		L.RegFunction("SetObject", SetObject);
 		L.RegFunction("LoadScene", LoadScene);
 		L.RegFunction("NewUI", NewUI);
 		L.RegFunction("SetText", SetText);
-		L.RegFunction("InitSR", InitSR);
-		L.RegFunction("RefreshSR", RefreshSR);
-		L.RegFunction("SRSelect", SRSelect);
+		L.RegFunction("SetImage", SetImage);
 		L.RegFunction("SetUIEv", SetUIEv);
 		L.RegFunction("AddClick", AddClick);
 		L.RegFunction("__eq", op_Equality);
@@ -117,12 +114,36 @@ public class UtilWrap
 	{
 		try
 		{
-			ToLua.CheckArgsCount(L, 2);
-			string arg0 = ToLua.CheckString(L, 1);
-			uint arg1 = (uint)LuaDLL.luaL_checknumber(L, 2);
-			uint o = Util.NewObj(arg0, arg1);
-			LuaDLL.lua_pushnumber(L, o);
-			return 1;
+			int count = LuaDLL.lua_gettop(L);
+
+			if (count == 1)
+			{
+				string arg0 = ToLua.CheckString(L, 1);
+				uint o = Util.NewObj(arg0);
+				LuaDLL.lua_pushnumber(L, o);
+				return 1;
+			}
+			else if (count == 2)
+			{
+				string arg0 = ToLua.CheckString(L, 1);
+				uint arg1 = (uint)LuaDLL.luaL_checknumber(L, 2);
+				uint o = Util.NewObj(arg0, arg1);
+				LuaDLL.lua_pushnumber(L, o);
+				return 1;
+			}
+			else if (count == 3)
+			{
+				string arg0 = ToLua.CheckString(L, 1);
+				uint arg1 = (uint)LuaDLL.luaL_checknumber(L, 2);
+				int arg2 = (int)LuaDLL.luaL_checknumber(L, 3);
+				uint o = Util.NewObj(arg0, arg1, arg2);
+				LuaDLL.lua_pushnumber(L, o);
+				return 1;
+			}
+			else
+			{
+				return LuaDLL.luaL_throw(L, "invalid arguments to method: Util.NewObj");
+			}
 		}
 		catch (Exception e)
 		{
@@ -152,6 +173,15 @@ public class UtilWrap
 				LuaDLL.lua_pushnumber(L, o);
 				return 1;
 			}
+			else if (count == 3)
+			{
+				string arg0 = ToLua.CheckString(L, 1);
+				uint arg1 = (uint)LuaDLL.luaL_checknumber(L, 2);
+				int arg2 = (int)LuaDLL.luaL_checknumber(L, 3);
+				uint o = Util.NewPref(arg0, arg1, arg2);
+				LuaDLL.lua_pushnumber(L, o);
+				return 1;
+			}
 			else
 			{
 				return LuaDLL.luaL_throw(L, "invalid arguments to method: Util.NewPref");
@@ -164,32 +194,37 @@ public class UtilWrap
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int SetActive(IntPtr L)
+	static int SetObject(IntPtr L)
 	{
 		try
 		{
-			ToLua.CheckArgsCount(L, 2);
-			uint arg0 = (uint)LuaDLL.luaL_checknumber(L, 1);
-			bool arg1 = LuaDLL.luaL_checkboolean(L, 2);
-			Util.SetActive(arg0, arg1);
-			return 0;
-		}
-		catch (Exception e)
-		{
-			return LuaDLL.toluaL_exception(L, e);
-		}
-	}
+			int count = LuaDLL.lua_gettop(L);
 
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int SetParent(IntPtr L)
-	{
-		try
-		{
-			ToLua.CheckArgsCount(L, 2);
-			uint arg0 = (uint)LuaDLL.luaL_checknumber(L, 1);
-			uint arg1 = (uint)LuaDLL.luaL_checknumber(L, 2);
-			Util.SetParent(arg0, arg1);
-			return 0;
+			if (count == 1)
+			{
+				uint arg0 = (uint)LuaDLL.luaL_checknumber(L, 1);
+				Util.SetObject(arg0);
+				return 0;
+			}
+			else if (count == 2)
+			{
+				uint arg0 = (uint)LuaDLL.luaL_checknumber(L, 1);
+				int arg1 = (int)LuaDLL.luaL_checknumber(L, 2);
+				Util.SetObject(arg0, arg1);
+				return 0;
+			}
+			else if (count == 3)
+			{
+				uint arg0 = (uint)LuaDLL.luaL_checknumber(L, 1);
+				int arg1 = (int)LuaDLL.luaL_checknumber(L, 2);
+				uint arg2 = (uint)LuaDLL.luaL_checknumber(L, 3);
+				Util.SetObject(arg0, arg1, arg2);
+				return 0;
+			}
+			else
+			{
+				return LuaDLL.luaL_throw(L, "invalid arguments to method: Util.SetObject");
+			}
 		}
 		catch (Exception e)
 		{
@@ -264,53 +299,31 @@ public class UtilWrap
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int InitSR(IntPtr L)
+	static int SetImage(IntPtr L)
 	{
 		try
 		{
-			ToLua.CheckArgsCount(L, 3);
-			uint arg0 = (uint)LuaDLL.luaL_checknumber(L, 1);
-			string arg1 = ToLua.CheckString(L, 2);
-			SRContainer.DlgWrapItem arg2 = (SRContainer.DlgWrapItem)ToLua.CheckDelegate<SRContainer.DlgWrapItem>(L, 3);
-			uint o = Util.InitSR(arg0, arg1, arg2);
-			LuaDLL.lua_pushnumber(L, o);
-			return 1;
-		}
-		catch (Exception e)
-		{
-			return LuaDLL.toluaL_exception(L, e);
-		}
-	}
+			int count = LuaDLL.lua_gettop(L);
 
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int RefreshSR(IntPtr L)
-	{
-		try
-		{
-			ToLua.CheckArgsCount(L, 2);
-			uint arg0 = (uint)LuaDLL.luaL_checknumber(L, 1);
-			int arg1 = (int)LuaDLL.luaL_checknumber(L, 2);
-			Util.RefreshSR(arg0, arg1);
-			return 0;
-		}
-		catch (Exception e)
-		{
-			return LuaDLL.toluaL_exception(L, e);
-		}
-	}
-
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int SRSelect(IntPtr L)
-	{
-		try
-		{
-			ToLua.CheckArgsCount(L, 3);
-			uint arg0 = (uint)LuaDLL.luaL_checknumber(L, 1);
-			uint arg1 = (uint)LuaDLL.luaL_checknumber(L, 2);
-			bool arg2 = LuaDLL.luaL_checkboolean(L, 3);
-			int o = Util.SRSelect(arg0, arg1, arg2);
-			LuaDLL.lua_pushinteger(L, o);
-			return 1;
+			if (count == 2)
+			{
+				uint arg0 = (uint)LuaDLL.luaL_checknumber(L, 1);
+				string arg1 = ToLua.CheckString(L, 2);
+				Util.SetImage(arg0, arg1);
+				return 0;
+			}
+			else if (count == 3)
+			{
+				uint arg0 = (uint)LuaDLL.luaL_checknumber(L, 1);
+				string arg1 = ToLua.CheckString(L, 2);
+				string arg2 = ToLua.CheckString(L, 3);
+				Util.SetImage(arg0, arg1, arg2);
+				return 0;
+			}
+			else
+			{
+				return LuaDLL.luaL_throw(L, "invalid arguments to method: Util.SetImage");
+			}
 		}
 		catch (Exception e)
 		{

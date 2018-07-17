@@ -8,16 +8,14 @@ function Cls_LuaDrive:ctor()
 	self.m_handle = UpdateBeat:CreateListener(self.update, self)
 	UpdateBeat:AddListener(self.m_handle)
 	self.m_listeners = {}
-	
-	-- local files = self:requireInfos()
-	-- for _, v in ipairs(files) do
-	-- 	require(v)
-	-- end
 
-	-- self:register(pool)
-	self:register(coMgr)
+	for _, v in ipairs(self:requireFiles()) do
+		require(v)
+	end
 	
-	-- self:register(uiMgr)
+	self:register(pool)
+	self:register(coMgr)
+	self:register(uiMgr)
 end
 
 function Cls_LuaDrive:update()
@@ -35,7 +33,7 @@ function Cls_LuaDrive:register(listener)
 	table.insert(self.m_listeners, listener)
 end
 
-function Cls_LuaDrive:requireInfos()
+function Cls_LuaDrive:requireFiles()
 	return 
 	{
 		"Mgr.UIBase",

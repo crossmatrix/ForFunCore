@@ -7,10 +7,11 @@ using System;
 public class ObjectCache {
     public static ObjectCache curInst { get; set; }
 
-    private static System.Type[] _objType = new System.Type[]{
+    private static Type[] _objType = new Type[]{
         typeof(GameObject),
         typeof(Transform),
         typeof(Text),
+        typeof(Image),
         typeof(SRContainer),
         typeof(Button)
     };
@@ -81,7 +82,7 @@ public class ObjectCache {
         _objectMap.TryGetValue(ptr, out obj);
         if (obj == null || obj.Equals(null))
         {
-            throw new Exception("fatal: not find ptr relation object");
+            throw new Exception("fatal: not find ptr relation object: " + ptr);
         }
         return obj;
     }

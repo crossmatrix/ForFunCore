@@ -58,6 +58,10 @@ public class UICtrl
     public static void AddClick(GameObject obj, LuaFunction ev)
     {
         Button btn = obj.GetComponent<Button>();
+        if (btn == null) {
+            btn = obj.AddComponent<Button>();
+            btn.transition = Selectable.Transition.None;
+        }
         btn.onClick.RemoveAllListeners();
         btn.onClick.AddListener(() => {
             ev.Call();
