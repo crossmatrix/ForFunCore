@@ -12,6 +12,7 @@ public class ObjectCache {
         typeof(Transform),
         typeof(Text),
         typeof(Image),
+        typeof(SliderAid),
         typeof(SRContainer),
         typeof(Button)
     };

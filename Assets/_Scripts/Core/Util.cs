@@ -90,32 +90,91 @@ public class Util : MonoBehaviour
         return objCache.NewPtr(inst);
     }
 
-    public static void SetText(uint ptr, string content)
+    public static void SetTxt(uint ptr, string content)
     {
         object obj = objCache.GetData(ptr);
         Text _t = obj as Text;
         _t.text = content;
     }
 
-    public static void SetText(uint rootPtr, string loc, string content)
+    public static void SetTxt(uint rootPtr, string loc, string content)
     {
         GameObject root = objCache.GetGameObject(rootPtr);
         Text _t = root.transform.Find(loc).GetComponent<Text>();
         _t.text = content;
     }
 
-    public static void SetImage(uint ptr, string spritePath)
+    public static void SetImg(uint ptr, string spritePath)
     {
         object obj = objCache.GetData(ptr);
         Image _img = obj as Image;
         _img.sprite = resCtrl.GetSprite(spritePath);
     }
 
-    public static void SetImage(uint rootPtr, string loc, string spritePath)
+    public static void SetImg(uint rootPtr, string loc, string spritePath)
     {
         GameObject root = objCache.GetGameObject(rootPtr);
         Image _img = root.transform.Find(loc).GetComponent<Image>();
         _img.sprite = resCtrl.GetSprite(spritePath);
+    }
+
+    public static void InitTog(uint rootPtr, string loc, string name, LuaFunction onValChange) {
+        GameObject root = objCache.GetGameObject(rootPtr);
+        Toggle _tog = root.transform.Find(loc).GetComponent<Toggle>();
+        foreach (Text t in _tog.GetComponentsInChildren<Text>(true)) {
+            t.text = name;
+        }
+        GameObject _dim = _tog.GetComponent<ToggleAid>().dimPart;
+        Button btn = _dim.GetComponent<Button>();
+        if (btn == null) {
+            btn = _dim.AddComponent<Button>();
+        }
+        btn.onClick.AddListener(() => {
+            _tog.isOn = true;
+            onValChange.Call();
+        });
+    }
+
+    public static void ResetTog(uint rootPtr, string loc) {
+        GameObject root = objCache.GetGameObject(rootPtr);
+        ToggleAid _aid = root.transform.Find(loc).GetComponent<ToggleAid>();
+        ToggleGroup _group = _aid.transform.parent.GetComponent<ToggleGroup>();
+        _group.SetAllTogglesOff();
+        _aid.dimPart.GetComponent<Button>().onClick.Invoke();
+    }
+
+    public static void SetPrg(uint ptr, float val, bool isGrad = false) {
+        SliderAid _sldAid = objCache.GetData(ptr) as SliderAid;
+        _sldAid.SetValue(val, isGrad);
+    }
+
+    public static void AddPrg(uint ptr, float val, bool isGrad = false)
+    {
+        SliderAid _sldAid = objCache.GetData(ptr) as SliderAid;
+        _sldAid.AddValue(val, isGrad);
+    }
+
+    public static string GetInputCont(uint rootPtr, string loc) {
+        GameObject root = objCache.GetGameObject(rootPtr);
+        return root.transform.Find(loc).GetComponent<InputField>().text;
+    }
+
+    public static void SetInputCont(uint rootPtr, string loc, string cont) {
+        GameObject root = objCache.GetGameObject(rootPtr);
+        root.transform.Find(loc).GetComponent<InputField>().text = cont;
+    }
+
+    public static void CopyChild(uint rootPtr, string loc, int num) {
+        GameObject root = objCache.GetGameObject(rootPtr);
+        Transform trans = root.transform.Find(loc);
+        Transform pref = trans.GetChild(0);
+        string name = pref.name;
+        pref.name = name + "1";
+        for (int i = 1; i < num; i++) {
+            Transform inst = GameObject.Instantiate(pref).transform;
+            inst.SetParent(trans, false);
+            inst.name = name + (i + 1);
+        }
     }
 
     //public static uint InitSR(uint rootPtr, string loc, SRContainer.DlgWrapItem onWrap)

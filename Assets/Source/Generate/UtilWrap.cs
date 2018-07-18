@@ -17,8 +17,15 @@ public class UtilWrap
 		L.RegFunction("SetObject", SetObject);
 		L.RegFunction("LoadScene", LoadScene);
 		L.RegFunction("NewUI", NewUI);
-		L.RegFunction("SetText", SetText);
-		L.RegFunction("SetImage", SetImage);
+		L.RegFunction("SetTxt", SetTxt);
+		L.RegFunction("SetImg", SetImg);
+		L.RegFunction("InitTog", InitTog);
+		L.RegFunction("ResetTog", ResetTog);
+		L.RegFunction("SetPrg", SetPrg);
+		L.RegFunction("AddPrg", AddPrg);
+		L.RegFunction("GetInputCont", GetInputCont);
+		L.RegFunction("SetInputCont", SetInputCont);
+		L.RegFunction("CopyChild", CopyChild);
 		L.RegFunction("SetUIEv", SetUIEv);
 		L.RegFunction("AddClick", AddClick);
 		L.RegFunction("__eq", op_Equality);
@@ -266,7 +273,7 @@ public class UtilWrap
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int SetText(IntPtr L)
+	static int SetTxt(IntPtr L)
 	{
 		try
 		{
@@ -276,7 +283,7 @@ public class UtilWrap
 			{
 				uint arg0 = (uint)LuaDLL.luaL_checknumber(L, 1);
 				string arg1 = ToLua.CheckString(L, 2);
-				Util.SetText(arg0, arg1);
+				Util.SetTxt(arg0, arg1);
 				return 0;
 			}
 			else if (count == 3)
@@ -284,12 +291,12 @@ public class UtilWrap
 				uint arg0 = (uint)LuaDLL.luaL_checknumber(L, 1);
 				string arg1 = ToLua.CheckString(L, 2);
 				string arg2 = ToLua.CheckString(L, 3);
-				Util.SetText(arg0, arg1, arg2);
+				Util.SetTxt(arg0, arg1, arg2);
 				return 0;
 			}
 			else
 			{
-				return LuaDLL.luaL_throw(L, "invalid arguments to method: Util.SetText");
+				return LuaDLL.luaL_throw(L, "invalid arguments to method: Util.SetTxt");
 			}
 		}
 		catch (Exception e)
@@ -299,7 +306,7 @@ public class UtilWrap
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int SetImage(IntPtr L)
+	static int SetImg(IntPtr L)
 	{
 		try
 		{
@@ -309,7 +316,7 @@ public class UtilWrap
 			{
 				uint arg0 = (uint)LuaDLL.luaL_checknumber(L, 1);
 				string arg1 = ToLua.CheckString(L, 2);
-				Util.SetImage(arg0, arg1);
+				Util.SetImg(arg0, arg1);
 				return 0;
 			}
 			else if (count == 3)
@@ -317,13 +324,169 @@ public class UtilWrap
 				uint arg0 = (uint)LuaDLL.luaL_checknumber(L, 1);
 				string arg1 = ToLua.CheckString(L, 2);
 				string arg2 = ToLua.CheckString(L, 3);
-				Util.SetImage(arg0, arg1, arg2);
+				Util.SetImg(arg0, arg1, arg2);
 				return 0;
 			}
 			else
 			{
-				return LuaDLL.luaL_throw(L, "invalid arguments to method: Util.SetImage");
+				return LuaDLL.luaL_throw(L, "invalid arguments to method: Util.SetImg");
 			}
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int InitTog(IntPtr L)
+	{
+		try
+		{
+			ToLua.CheckArgsCount(L, 4);
+			uint arg0 = (uint)LuaDLL.luaL_checknumber(L, 1);
+			string arg1 = ToLua.CheckString(L, 2);
+			string arg2 = ToLua.CheckString(L, 3);
+			LuaFunction arg3 = ToLua.CheckLuaFunction(L, 4);
+			Util.InitTog(arg0, arg1, arg2, arg3);
+			return 0;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int ResetTog(IntPtr L)
+	{
+		try
+		{
+			ToLua.CheckArgsCount(L, 2);
+			uint arg0 = (uint)LuaDLL.luaL_checknumber(L, 1);
+			string arg1 = ToLua.CheckString(L, 2);
+			Util.ResetTog(arg0, arg1);
+			return 0;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int SetPrg(IntPtr L)
+	{
+		try
+		{
+			int count = LuaDLL.lua_gettop(L);
+
+			if (count == 2)
+			{
+				uint arg0 = (uint)LuaDLL.luaL_checknumber(L, 1);
+				float arg1 = (float)LuaDLL.luaL_checknumber(L, 2);
+				Util.SetPrg(arg0, arg1);
+				return 0;
+			}
+			else if (count == 3)
+			{
+				uint arg0 = (uint)LuaDLL.luaL_checknumber(L, 1);
+				float arg1 = (float)LuaDLL.luaL_checknumber(L, 2);
+				bool arg2 = LuaDLL.luaL_checkboolean(L, 3);
+				Util.SetPrg(arg0, arg1, arg2);
+				return 0;
+			}
+			else
+			{
+				return LuaDLL.luaL_throw(L, "invalid arguments to method: Util.SetPrg");
+			}
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int AddPrg(IntPtr L)
+	{
+		try
+		{
+			int count = LuaDLL.lua_gettop(L);
+
+			if (count == 2)
+			{
+				uint arg0 = (uint)LuaDLL.luaL_checknumber(L, 1);
+				float arg1 = (float)LuaDLL.luaL_checknumber(L, 2);
+				Util.AddPrg(arg0, arg1);
+				return 0;
+			}
+			else if (count == 3)
+			{
+				uint arg0 = (uint)LuaDLL.luaL_checknumber(L, 1);
+				float arg1 = (float)LuaDLL.luaL_checknumber(L, 2);
+				bool arg2 = LuaDLL.luaL_checkboolean(L, 3);
+				Util.AddPrg(arg0, arg1, arg2);
+				return 0;
+			}
+			else
+			{
+				return LuaDLL.luaL_throw(L, "invalid arguments to method: Util.AddPrg");
+			}
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int GetInputCont(IntPtr L)
+	{
+		try
+		{
+			ToLua.CheckArgsCount(L, 2);
+			uint arg0 = (uint)LuaDLL.luaL_checknumber(L, 1);
+			string arg1 = ToLua.CheckString(L, 2);
+			string o = Util.GetInputCont(arg0, arg1);
+			LuaDLL.lua_pushstring(L, o);
+			return 1;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int SetInputCont(IntPtr L)
+	{
+		try
+		{
+			ToLua.CheckArgsCount(L, 3);
+			uint arg0 = (uint)LuaDLL.luaL_checknumber(L, 1);
+			string arg1 = ToLua.CheckString(L, 2);
+			string arg2 = ToLua.CheckString(L, 3);
+			Util.SetInputCont(arg0, arg1, arg2);
+			return 0;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int CopyChild(IntPtr L)
+	{
+		try
+		{
+			ToLua.CheckArgsCount(L, 3);
+			uint arg0 = (uint)LuaDLL.luaL_checknumber(L, 1);
+			string arg1 = ToLua.CheckString(L, 2);
+			int arg2 = (int)LuaDLL.luaL_checknumber(L, 3);
+			Util.CopyChild(arg0, arg1, arg2);
+			return 0;
 		}
 		catch (Exception e)
 		{
