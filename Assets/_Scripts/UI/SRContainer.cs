@@ -54,7 +54,7 @@ public class SRContainer : MonoBehaviour
 
     public delegate void DlgWrapItem(uint ptr, int realIndex);
 
-    const string HL_NAME = "HL";
+    const string HL_NAME = "__HL__";
 
     public float spacing;
     public int column;
@@ -138,10 +138,18 @@ public class SRContainer : MonoBehaviour
         }
     }
 
-    public void Refresh(int num)
+    public void Refresh(int num, int target, bool isHl)
     {
         this.num = num;
         int activeNum = 0;
+        int targIndex = InverseEnvConvert(target);
+        int startIndex = targIndex;
+        curSelIndex = -1;
+        if (prevHlObj != null)
+        {
+            prevHlObj.SetActive(false);
+        }
+
         if (type == SRType.Vert)
         {
             float contentSize = interval * num - spacing;
@@ -149,23 +157,50 @@ public class SRContainer : MonoBehaviour
             initPos = 0.5f * (contentSize - itemSize);
 
             rt.sizeDelta = new Vector2(srMinorSize, contentSize);
-            rt.anchoredPosition = Vector2.zero;
+            float limit = Mathf.Max(0, contentSize - srMainSize);
+            rt.anchoredPosition = new Vector2(0, Mathf.Min(limit, startIndex * interval));
+
+            if (num < _itemList.Count)
+            {
+                startIndex = 0;
+            }
+            else
+            {
+                if (startIndex > 0)
+                {
+                    startIndex -= 1;
+                }
+                if (startIndex + _itemList.Count > num)
+                {
+                    startIndex = num - _itemList.Count;
+                }
+            }
+
             for (int i = 0; i < _itemList.Count; i++)
             {
                 WrapItem item = _itemList[i];
                 RectTransform itemRt = item.rt;
-                if (i < num)
+
+                int offsetIndex = i + startIndex;
+                if (offsetIndex < num)
                 {
                     itemRt.gameObject.SetActive(true);
-                    itemRt.anchoredPosition = new Vector2(0, FormulaV(i));
-                    _onWrapItem(item.ptr, EnvConvert(i));
+                    itemRt.anchoredPosition = new Vector2(0, FormulaV(offsetIndex));
+                    _onWrapItem(item.ptr, EnvConvert(offsetIndex));
                     activeNum++;
                 }
                 else
                 {
                     itemRt.gameObject.SetActive(false);
                 }
+
+                if (isHl && offsetIndex == targIndex)
+                {
+                    SetHl(targIndex, itemRt.gameObject);
+                }
             }
+            curFirstIndex = startIndex;
+            curLastIndex = startIndex + activeNum;
         }
         else if (type == SRType.Horz)
         {
@@ -174,23 +209,50 @@ public class SRContainer : MonoBehaviour
             initPos = -0.5f * (contentSize - itemSize);
 
             rt.sizeDelta = new Vector2(contentSize, srMinorSize);
-            rt.anchoredPosition = Vector2.zero;
+            float limit = Mathf.Max(0, contentSize - srMainSize);
+            rt.anchoredPosition = new Vector2(-Mathf.Min(limit, startIndex * interval), 0);
+
+            if (num < _itemList.Count)
+            {
+                startIndex = 0;
+            }
+            else
+            {
+                if (startIndex > 0)
+                {
+                    startIndex -= 1;
+                }
+                if (startIndex + _itemList.Count > num)
+                {
+                    startIndex = num - _itemList.Count;
+                }
+            }
+
             for (int i = 0; i < _itemList.Count; i++)
             {
                 WrapItem item = _itemList[i];
                 RectTransform itemRt = item.rt;
-                if (i < num)
+
+                int offsetIndex = i + startIndex;
+                if (offsetIndex < num)
                 {
                     itemRt.gameObject.SetActive(true);
-                    itemRt.anchoredPosition = new Vector2(FormulaH(i), 0);
-                    _onWrapItem(item.ptr, EnvConvert(i));
+                    itemRt.anchoredPosition = new Vector2(FormulaH(offsetIndex), 0);
+                    _onWrapItem(item.ptr, EnvConvert(offsetIndex));
                     activeNum++;
                 }
                 else
                 {
                     itemRt.gameObject.SetActive(false);
                 }
+
+                if (isHl && offsetIndex == targIndex)
+                {
+                    SetHl(targIndex, itemRt.gameObject);
+                }
             }
+            curFirstIndex = startIndex;
+            curLastIndex = startIndex + activeNum;
         }
         else
         {
@@ -200,18 +262,46 @@ public class SRContainer : MonoBehaviour
             initPos = 0.5f * (contentSize - itemSize);
 
             rt.sizeDelta = new Vector2(srMinorSize, contentSize);
-            rt.anchoredPosition = Vector2.zero;
+            float limit = Mathf.Max(0, contentSize - srMainSize);
+
+            int startLine = startIndex / column;
+            rt.anchoredPosition = new Vector2(0, Mathf.Min(limit, startLine * interval));
+
+            if (realNum < _itemList.Count)
+            {
+                startLine = 0;
+            }
+            else
+            {
+                if (startLine > 0)
+                {
+                    startLine -= 1;
+                }
+                if (startLine + _itemList.Count > realNum)
+                {
+                    startLine = realNum - _itemList.Count;
+                }
+            }
+
             for (int i = 0; i < _itemList.Count; i++)
             {
                 WrapItem item = _itemList[i];
                 RectTransform itemRt = item.rt;
-                if (i < realNum)
+
+                int offsetLine = i + startLine;
+                if (offsetLine < realNum)
                 {
                     itemRt.gameObject.SetActive(true);
-                    itemRt.anchoredPosition = new Vector2(0, FormulaV(i));
+                    itemRt.anchoredPosition = new Vector2(0, FormulaV(offsetLine));
                     for (int _i = 0; _i < column; _i++)
                     {
-                        _onWrapItem(item.ptrs[_i], EnvConvert(i * column + _i));
+                        int _itemIndex = offsetLine * column + _i;
+                        _onWrapItem(item.ptrs[_i], EnvConvert(_itemIndex));
+
+                        if (isHl && _itemIndex == targIndex)
+                        {
+                            SetHl(targIndex, item.children[_i]);
+                        }
                     }
                     activeNum++;
                 }
@@ -220,9 +310,9 @@ public class SRContainer : MonoBehaviour
                     itemRt.gameObject.SetActive(false);
                 }
             }
+            curFirstIndex = startLine;
+            curLastIndex = startLine + activeNum;
         }
-        curFirstIndex = 0;
-        curLastIndex = activeNum;
     }
 
     public int Select(GameObject obj, bool isHl)
@@ -248,17 +338,7 @@ public class SRContainer : MonoBehaviour
 
         if (isHl)
         {
-            curSelIndex = rs;
-            GameObject hlObj;
-            if (hlMap.TryGetValue(obj, out hlObj))
-            {
-                if (prevHlObj != null)
-                {
-                    prevHlObj.SetActive(false);
-                }
-                hlObj.SetActive(true);
-                prevHlObj = hlObj;
-            }
+            SetHl(rs, obj);
         }
         return EnvConvert(rs);
     }
@@ -276,6 +356,10 @@ public class SRContainer : MonoBehaviour
     private int EnvConvert(int index)
     {
         return index + 1;
+    }
+
+    private int InverseEnvConvert(int index) {
+        return index - 1;
     }
 
     private void OnValueChangeV(Vector2 delta)
@@ -422,6 +506,23 @@ public class SRContainer : MonoBehaviour
             if (hlMap.TryGetValue(obj, out hlObj) && state != hlObj.activeSelf)
             {
                 hlObj.SetActive(state);
+            }
+        }
+    }
+
+    private void SetHl(int index, GameObject obj) {
+        if (hlMap != null)
+        {
+            curSelIndex = index;
+            GameObject hlObj;
+            if (hlMap.TryGetValue(obj, out hlObj))
+            {
+                if (prevHlObj != null)
+                {
+                    prevHlObj.SetActive(false);
+                }
+                hlObj.SetActive(true);
+                prevHlObj = hlObj;
             }
         }
     }

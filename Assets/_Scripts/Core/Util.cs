@@ -177,28 +177,26 @@ public class Util : MonoBehaviour
         }
     }
 
-    //public static uint InitSR(uint rootPtr, string loc, SRContainer.DlgWrapItem onWrap)
-    //{
-    //    GameObject root = objCache.GetGameObject(rootPtr);
-    //    SRContainer _sr = root.transform.Find(loc).GetComponent<SRContainer>();
-    //    _sr.Init(onWrap);
-    //    return objCache.NewPtr(_sr);
-    //}
+    public static uint InitSR(uint rootPtr, string loc, SRContainer.DlgWrapItem onWrap)
+    {
+        GameObject root = objCache.GetGameObject(rootPtr);
+        SRContainer _sr = root.transform.Find(loc).GetComponent<SRContainer>();
+        _sr.Init(onWrap);
+        return objCache.NewPtr(_sr);
+    }
 
-    //public static void RefreshSR(uint ptr, int num)
-    //{
-    //    object obj = objCache.GetData(ptr);
-    //    SRContainer _sr = obj as SRContainer;
-    //    _sr.Refresh(num);
-    //}
+    public static void RefreshSR(uint ptr, int num, int target, bool isHl = false)
+    {
+        SRContainer _sr = objCache.GetData(ptr) as SRContainer;
+        _sr.Refresh(num, target, isHl);
+    }
 
-    //public static int SRSelect(uint srPtr, uint ptr, bool isHl)
-    //{
-    //    object obj = objCache.GetData(srPtr);
-    //    SRContainer _sr = obj as SRContainer;
-    //    GameObject item = objCache.GetGameObject(ptr);
-    //    return _sr.Select(item, isHl);
-    //}
+    public static int SRSelect(uint srPtr, uint ptr, bool isHl = false)
+    {
+        SRContainer _sr = objCache.GetData(srPtr) as SRContainer;
+        GameObject item = objCache.GetGameObject(ptr);
+        return _sr.Select(item, isHl);
+    }
 
     public static void SetUIEv(uint ptr, int tp, LuaFunction ev)
     {

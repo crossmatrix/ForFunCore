@@ -23,6 +23,7 @@ public class DelegateFactory
 		dict.Add(typeof(System.Action<int>), factory.System_Action_int);
 		dict.Add(typeof(System.Comparison<int>), factory.System_Comparison_int);
 		dict.Add(typeof(System.Func<int,int>), factory.System_Func_int_int);
+		dict.Add(typeof(SRContainer.DlgWrapItem), factory.SRContainer_DlgWrapItem);
 		dict.Add(typeof(DG.Tweening.Core.DOGetter<float>), factory.DG_Tweening_Core_DOGetter_float);
 		dict.Add(typeof(DG.Tweening.Core.DOSetter<float>), factory.DG_Tweening_Core_DOSetter_float);
 		dict.Add(typeof(DG.Tweening.Core.DOGetter<double>), factory.DG_Tweening_Core_DOGetter_double);
@@ -67,6 +68,7 @@ public class DelegateFactory
 		DelegateTraits<System.Action<int>>.Init(factory.System_Action_int);
 		DelegateTraits<System.Comparison<int>>.Init(factory.System_Comparison_int);
 		DelegateTraits<System.Func<int,int>>.Init(factory.System_Func_int_int);
+		DelegateTraits<SRContainer.DlgWrapItem>.Init(factory.SRContainer_DlgWrapItem);
 		DelegateTraits<DG.Tweening.Core.DOGetter<float>>.Init(factory.DG_Tweening_Core_DOGetter_float);
 		DelegateTraits<DG.Tweening.Core.DOSetter<float>>.Init(factory.DG_Tweening_Core_DOSetter_float);
 		DelegateTraits<DG.Tweening.Core.DOGetter<double>>.Init(factory.DG_Tweening_Core_DOGetter_double);
@@ -111,6 +113,7 @@ public class DelegateFactory
 		TypeTraits<System.Action<int>>.Init(factory.Check_System_Action_int);
 		TypeTraits<System.Comparison<int>>.Init(factory.Check_System_Comparison_int);
 		TypeTraits<System.Func<int,int>>.Init(factory.Check_System_Func_int_int);
+		TypeTraits<SRContainer.DlgWrapItem>.Init(factory.Check_SRContainer_DlgWrapItem);
 		TypeTraits<DG.Tweening.Core.DOGetter<float>>.Init(factory.Check_DG_Tweening_Core_DOGetter_float);
 		TypeTraits<DG.Tweening.Core.DOSetter<float>>.Init(factory.Check_DG_Tweening_Core_DOSetter_float);
 		TypeTraits<DG.Tweening.Core.DOGetter<double>>.Init(factory.Check_DG_Tweening_Core_DOGetter_double);
@@ -155,6 +158,7 @@ public class DelegateFactory
 		StackTraits<System.Action<int>>.Push = factory.Push_System_Action_int;
 		StackTraits<System.Comparison<int>>.Push = factory.Push_System_Comparison_int;
 		StackTraits<System.Func<int,int>>.Push = factory.Push_System_Func_int_int;
+		StackTraits<SRContainer.DlgWrapItem>.Push = factory.Push_SRContainer_DlgWrapItem;
 		StackTraits<DG.Tweening.Core.DOGetter<float>>.Push = factory.Push_DG_Tweening_Core_DOGetter_float;
 		StackTraits<DG.Tweening.Core.DOSetter<float>>.Push = factory.Push_DG_Tweening_Core_DOSetter_float;
 		StackTraits<DG.Tweening.Core.DOGetter<double>>.Push = factory.Push_DG_Tweening_Core_DOGetter_double;
@@ -647,6 +651,65 @@ public class DelegateFactory
 	}
 
 	void Push_System_Func_int_int(IntPtr L, System.Func<int,int> o)
+	{
+		ToLua.Push(L, o);
+	}
+
+	class SRContainer_DlgWrapItem_Event : LuaDelegate
+	{
+		public SRContainer_DlgWrapItem_Event(LuaFunction func) : base(func) { }
+		public SRContainer_DlgWrapItem_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+
+		public void Call(uint param0, int param1)
+		{
+			func.BeginPCall();
+			func.Push(param0);
+			func.Push(param1);
+			func.PCall();
+			func.EndPCall();
+		}
+
+		public void CallWithSelf(uint param0, int param1)
+		{
+			func.BeginPCall();
+			func.Push(self);
+			func.Push(param0);
+			func.Push(param1);
+			func.PCall();
+			func.EndPCall();
+		}
+	}
+
+	public SRContainer.DlgWrapItem SRContainer_DlgWrapItem(LuaFunction func, LuaTable self, bool flag)
+	{
+		if (func == null)
+		{
+			SRContainer.DlgWrapItem fn = delegate(uint param0, int param1) { };
+			return fn;
+		}
+
+		if(!flag)
+		{
+			SRContainer_DlgWrapItem_Event target = new SRContainer_DlgWrapItem_Event(func);
+			SRContainer.DlgWrapItem d = target.Call;
+			target.method = d.Method;
+			return d;
+		}
+		else
+		{
+			SRContainer_DlgWrapItem_Event target = new SRContainer_DlgWrapItem_Event(func, self);
+			SRContainer.DlgWrapItem d = target.CallWithSelf;
+			target.method = d.Method;
+			return d;
+		}
+	}
+
+	bool Check_SRContainer_DlgWrapItem(IntPtr L, int pos)
+	{
+		return TypeChecker.CheckDelegateType(typeof(SRContainer.DlgWrapItem), L, pos);
+	}
+
+	void Push_SRContainer_DlgWrapItem(IntPtr L, SRContainer.DlgWrapItem o)
 	{
 		ToLua.Push(L, o);
 	}

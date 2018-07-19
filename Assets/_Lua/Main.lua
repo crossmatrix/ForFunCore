@@ -771,8 +771,6 @@ coMgr:start(function()
 	TestUI()
 end)
 
-
-
 --ui
 --enum
 --net/pb

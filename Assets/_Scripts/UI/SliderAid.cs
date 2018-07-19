@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class SliderAid : MonoBehaviour {
+    const float GRAD_VAL = 0.01f;
+    const float PRECISION = 1e-05f;
+
     public bool isRecycle;
 
     private Slider _sld;
@@ -20,22 +23,26 @@ public class SliderAid : MonoBehaviour {
     {
         if (_grading)
         {
-            float delta = 0.01f;
-            if (_recoard + 0.01f >= _target) {
-                delta = _target - _recoard;
+            
+            if (_recoard + GRAD_VAL >= _target)
+            {
                 _grading = false;
+                _recoard = _target;
+                DoSetSlider(_target);
             }
-            _recoard += delta;
-
-            float value = (_sld.value + delta) % 1;
-            if (AlmostEqual(value, 0)) {
-                value = 1;
+            else {
+                _recoard += GRAD_VAL;
+                DoSetSlider(_sld.value + GRAD_VAL);
             }
-            _sld.value = value;
         }
     }
 
     public void SetValue(float val, bool isGrad) {
+        if (AlmostEqual(val, 0)) {
+            _sld.value = 0;
+            return;
+        }
+
         if (isGrad)
         {
             _target = val;
@@ -43,12 +50,13 @@ public class SliderAid : MonoBehaviour {
             _grading = true;
         }
         else {
-            float v = val % 1;
-            if (AlmostEqual(v, 0)) {
-                v = AlmostEqual(val, 0) ? 0 : 1;
-            }
-            _sld.value = v;
+            DoSetSlider(val);
         }
+    }
+
+    public static bool AlmostEqual(float f1, float f2)
+    {
+        return Mathf.Abs(f1 - f2) <= PRECISION;
     }
 
     public void AddValue(float val, bool isGrad) {
@@ -69,17 +77,15 @@ public class SliderAid : MonoBehaviour {
             }
         }
         else {
-            float v = (_sld.value + val) % 1;
-            if (AlmostEqual(v, 0)) {
-                v = 1;
-            }
-            _sld.value = v;
+            DoSetSlider(_sld.value + val);
         }
     }
 
-    public static float PRECISION = 0.00001f;
-    public static bool AlmostEqual(float f1, float f2)
-    {
-        return Mathf.Abs(f1 - f2) <= PRECISION;
+    private void DoSetSlider(float val) {
+        float v = val % 1;
+        if (AlmostEqual(v, 0)) {
+            v = 1;
+        }
+        _sld.value = v;
     }
 }

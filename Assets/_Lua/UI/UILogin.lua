@@ -6,11 +6,6 @@ local testData
 function UILogin:onInit()
 	UIBase.onInit(self)
 
-	testData = {}
-	for i = 1, 102 do
-		testData[i] = i
-	end
-
 	-- text1
 	Util.SetTxt(self.__inst, "BtnLogin/Label", "haha1")
 	-- text2
@@ -51,7 +46,7 @@ function UILogin:onInit()
 	-- Progress SetPrg
 	-- coMgr:awaitTime(1)
 	local prgPtr = Util.GetPtr(self.__inst, "Progress", 4)
-	-- Util.SetPrg(prgPtr, 0)
+	Util.SetPrg(prgPtr, 0)
 	-- Util.SetPrg(prgPtr, 1.99999)
 	-- Util.SetPrg(prgPtr, 2.00001)
 	-- Util.SetPrg(prgPtr, 2)
@@ -85,23 +80,24 @@ function UILogin:onInit()
 	Util.SetInputCont(self.__inst, "InputField", "hahaha...")
 
 	-- sv
-
-	-- self.vars["sv1"] = LU:InitSR(self.__inst, "VertSR/View/VertContainer", self.OnWrapItem1)
-	-- self.vars["sv2"] = LU:InitSR(self.__inst, "HorzSR/View/HorzContainer", self.OnWrapItem2)
-	-- self.vars["sv3"] = LU:InitSR(self.__inst, "GridSR/View/GridContainer", self.OnWrapItem3)
-
-	-- self.vars["Test1"] = GameProxy.GetPtr(self.__inst, "Test1", 0)
+	self:GenData(102)
+	self.vars["sv1"] = Util.InitSR(self.__inst, "VertSR/View/VertContainer", self.OnWrapItem1)
+	self.vars["sv2"] = Util.InitSR(self.__inst, "VertSR1/View/VertContainer", self.OnWrapItem2)
+	self.vars["sv3"] = Util.InitSR(self.__inst, "HorzSR/View/HorzContainer", self.OnWrapItem3)
+	self.vars["sv4"] = Util.InitSR(self.__inst, "GridSR/View/GridContainer", self.OnWrapItem4)
 end
 
+local test = 1
 function UILogin:onShow()
 	log("uilogin show")
 
-	-- coMgr:start(function()
-	-- 	coMgr:awaitTime(1)
-	-- 	LU:RefreshSR(self.vars["sv1"], #testData)
-	-- 	LU:RefreshSR(self.vars["sv2"], #testData)
-	-- 	LU:RefreshSR(self.vars["sv3"], #testData)
-	-- end)
+	coMgr:start(function()
+		coMgr:awaitTime(1)
+		Util.RefreshSR(self.vars["sv1"], #testData, test)
+		Util.RefreshSR(self.vars["sv2"], #testData, test, true)
+		Util.RefreshSR(self.vars["sv3"], #testData, test, true)
+		Util.RefreshSR(self.vars["sv4"], #testData, test, true)
+	end)
 end
 
 function UILogin:onHide()
@@ -114,6 +110,26 @@ function UILogin:onUpdate(t)
 		Util.ResetTog(self.__inst, "TG2/Tog1")
 	elseif UnityEngine.Input.GetKeyDown(UnityEngine.KeyCode.D) then
 		log(Util.GetInputCont(self.__inst, "InputField"))
+	elseif UnityEngine.Input.GetKeyDown(UnityEngine.KeyCode.Q) then
+		-- self:GenData(3)
+		test = test + 1
+		-- Util.RefreshSR(self.vars["sv1"], #testData, test)
+		Util.RefreshSR(self.vars["sv3"], #testData, test)
+	elseif UnityEngine.Input.GetKeyDown(UnityEngine.KeyCode.W) then
+		self:GenData(3)
+		test = test + 1
+		Util.RefreshSR(self.vars["sv2"], #testData, test, true)
+	elseif UnityEngine.Input.GetKeyDown(UnityEngine.KeyCode.E) then
+		self:GenData(12)
+		test = test + 1
+		Util.RefreshSR(self.vars["sv4"], #testData, test, true)
+	end
+end
+
+function UILogin:GenData(t)
+	testData = {}
+	for i = 1, t do
+		testData[i] = i
 	end
 end
 
@@ -131,49 +147,63 @@ end
 
 function UILogin.OnWrapItem1(ptr, realIndex)
 	local data = testData[realIndex]
-	local empty, wdgs = UILogin:GetItemWdgs(ptr, "sv1")
+	local empty, wdgs = UILogin:GetSRItem(ptr, "sv1")
 	if empty then
-		wdgs["Text"] = GameProxy.GetPtr(ptr, "Text", 2)
-		LU:AddClick(wdgs["Text"], function() UILogin:ClickItem(ptr) end)
+		wdgs["Text"] = Util.GetPtr(ptr, "Text", 2)
+		Util.AddClick(ptr, "Btn", function() UILogin:ClickItem(ptr) end)
 	end
-	LU:SetText(wdgs["Text"], data)
+	Util.SetTxt(wdgs["Text"], data)
 end
 
 function UILogin.OnWrapItem2(ptr, realIndex)
 	local data = testData[realIndex]
-	local empty, wdgs = UILogin:GetItemWdgs(ptr, "sv2")
+	local empty, wdgs = UILogin:GetSRItem(ptr, "sv2")
 	if empty then
-		wdgs["Text"] = GameProxy.GetPtr(ptr, "Text", 2)
-		LU:AddClickD(ptr, "Text", function() UILogin:ClickItem2(ptr) end)
+		wdgs["Text"] = Util.GetPtr(ptr, "Text", 2)
+		Util.AddClick(ptr, "Btn", function() UILogin:ClickItem2(ptr) end)
 	end
-	LU:SetText(wdgs["Text"], data)
+	Util.SetTxt(wdgs["Text"], data)
 end
 
 function UILogin.OnWrapItem3(ptr, realIndex)
 	local data = testData[realIndex]
-	local empty, wdgs = UILogin:GetItemWdgs(ptr, "sv3")
+	local empty, wdgs = UILogin:GetSRItem(ptr, "sv3")
 	if empty then
-		wdgs["Text"] = GameProxy.GetPtr(ptr, "Text", 2)
-		LU:AddClick(wdgs["Text"], function() UILogin:ClickItem3(ptr) end)
+		wdgs["Text"] = Util.GetPtr(ptr, "Text", 2)
+		Util.AddClick(wdgs["Text"], function() UILogin:ClickItem3(ptr) end)
+	end
+	Util.SetTxt(wdgs["Text"], data)
+end
+
+function UILogin.OnWrapItem4(ptr, realIndex)
+	local data = testData[realIndex]
+	local empty, wdgs = UILogin:GetSRItem(ptr, "sv4")
+	if empty then
+		wdgs["Text"] = Util.GetPtr(ptr, "Text", 2)
+		Util.AddClick(wdgs["Text"], function() UILogin:ClickItem4(ptr) end)
 	end
 	if data then
-		LU:SetActive(ptr, true)
-		LU:SetText(wdgs["Text"], data)
+		Util.SetObject(ptr, 1)
+		Util.SetTxt(wdgs["Text"], data)
 	else
-		LU:SetActive(ptr, false)
+		Util.SetObject(ptr, 2)
 	end
 end
 
 function UILogin:ClickItem(ptr)
-	log(LU:SRSelect(self.vars["sv1"], ptr, true))
+	log(Util.SRSelect(self.vars["sv1"], ptr))
 end
 
 function UILogin:ClickItem2(ptr)
-	log(LU:SRSelect(self.vars["sv2"], ptr))
+	log(Util.SRSelect(self.vars["sv2"], ptr, true))
 end
 
 function UILogin:ClickItem3(ptr)
-	log(LU:SRSelect(self.vars["sv3"], ptr, true))
+	log(Util.SRSelect(self.vars["sv3"], ptr, true))
+end
+
+function UILogin:ClickItem4(ptr)
+	log(Util.SRSelect(self.vars["sv4"], ptr, true))
 end
 
 function UILogin:Open()

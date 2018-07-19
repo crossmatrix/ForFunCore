@@ -26,6 +26,9 @@ public class UtilWrap
 		L.RegFunction("GetInputCont", GetInputCont);
 		L.RegFunction("SetInputCont", SetInputCont);
 		L.RegFunction("CopyChild", CopyChild);
+		L.RegFunction("InitSR", InitSR);
+		L.RegFunction("RefreshSR", RefreshSR);
+		L.RegFunction("SRSelect", SRSelect);
 		L.RegFunction("SetUIEv", SetUIEv);
 		L.RegFunction("AddClick", AddClick);
 		L.RegFunction("__eq", op_Equality);
@@ -487,6 +490,95 @@ public class UtilWrap
 			int arg2 = (int)LuaDLL.luaL_checknumber(L, 3);
 			Util.CopyChild(arg0, arg1, arg2);
 			return 0;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int InitSR(IntPtr L)
+	{
+		try
+		{
+			ToLua.CheckArgsCount(L, 3);
+			uint arg0 = (uint)LuaDLL.luaL_checknumber(L, 1);
+			string arg1 = ToLua.CheckString(L, 2);
+			SRContainer.DlgWrapItem arg2 = (SRContainer.DlgWrapItem)ToLua.CheckDelegate<SRContainer.DlgWrapItem>(L, 3);
+			uint o = Util.InitSR(arg0, arg1, arg2);
+			LuaDLL.lua_pushnumber(L, o);
+			return 1;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int RefreshSR(IntPtr L)
+	{
+		try
+		{
+			int count = LuaDLL.lua_gettop(L);
+
+			if (count == 3)
+			{
+				uint arg0 = (uint)LuaDLL.luaL_checknumber(L, 1);
+				int arg1 = (int)LuaDLL.luaL_checknumber(L, 2);
+				int arg2 = (int)LuaDLL.luaL_checknumber(L, 3);
+				Util.RefreshSR(arg0, arg1, arg2);
+				return 0;
+			}
+			else if (count == 4)
+			{
+				uint arg0 = (uint)LuaDLL.luaL_checknumber(L, 1);
+				int arg1 = (int)LuaDLL.luaL_checknumber(L, 2);
+				int arg2 = (int)LuaDLL.luaL_checknumber(L, 3);
+				bool arg3 = LuaDLL.luaL_checkboolean(L, 4);
+				Util.RefreshSR(arg0, arg1, arg2, arg3);
+				return 0;
+			}
+			else
+			{
+				return LuaDLL.luaL_throw(L, "invalid arguments to method: Util.RefreshSR");
+			}
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int SRSelect(IntPtr L)
+	{
+		try
+		{
+			int count = LuaDLL.lua_gettop(L);
+
+			if (count == 2)
+			{
+				uint arg0 = (uint)LuaDLL.luaL_checknumber(L, 1);
+				uint arg1 = (uint)LuaDLL.luaL_checknumber(L, 2);
+				int o = Util.SRSelect(arg0, arg1);
+				LuaDLL.lua_pushinteger(L, o);
+				return 1;
+			}
+			else if (count == 3)
+			{
+				uint arg0 = (uint)LuaDLL.luaL_checknumber(L, 1);
+				uint arg1 = (uint)LuaDLL.luaL_checknumber(L, 2);
+				bool arg2 = LuaDLL.luaL_checkboolean(L, 3);
+				int o = Util.SRSelect(arg0, arg1, arg2);
+				LuaDLL.lua_pushinteger(L, o);
+				return 1;
+			}
+			else
+			{
+				return LuaDLL.luaL_throw(L, "invalid arguments to method: Util.SRSelect");
+			}
 		}
 		catch (Exception e)
 		{
